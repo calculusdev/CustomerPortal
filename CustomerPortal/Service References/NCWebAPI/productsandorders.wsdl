@@ -286,6 +286,76 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
+      <s:element name="GetCustomerDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SystemID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SystemCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CustomerCode" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerDetailsResult" type="tns:GetCustomerDetailsReply" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetCustomerDetailsReply">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WebReply">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="CustomerData" type="tns:NMCustomerData" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="NMCustomerData">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:NMAddress">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="OverrideVATRateCode" type="s:long" />
+              <s:element minOccurs="0" maxOccurs="1" name="Forenames" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="DateOfBirthDateNum" type="s:long" />
+              <s:element minOccurs="0" maxOccurs="1" name="CustomerAccountNumber" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerCategoryCode" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsCashCustomer" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="BranchCode" type="s:long" />
+              <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Initials" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Surname" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Mobile1" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="NameField" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="NMAddress">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:NMRecord">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address3" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address4" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address5" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PostCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Telephone1" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Telephone2" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="NMRecord">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:long" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="Get_WebDomainDetails">
         <s:complexType>
           <s:sequence>
@@ -577,6 +647,103 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="CustomerApplication_ScheduleDelivery_Agreements">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SystemID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SystemCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CustomerCode" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ApplicationCode" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="BookForEngineerCode" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AutoSearchEngineerGroupCode" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="DeliveryDateNum" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ScheduleTimeTypeCode" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ScheduleTimeFromNum" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ScheduleDateToNum" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ScheduleTimeToNum" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ScheduleRingFirst" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CustomerApplication_ScheduleDelivery_AgreementsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerApplication_ScheduleDelivery_AgreementsResult" type="tns:RentalAgreement_ScheduleDelivery_Reply" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RentalAgreement_ScheduleDelivery_Reply">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WebReply" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="CustomerApplication_ScheduleDelivery_Orders">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SystemID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SystemCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CustomerCode" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ApplicationCode" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="BookForEngineerCode" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AutoSearchEngineerGroupCode" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="DeliveryDateNum" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ScheduleTimeTypeCode" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ScheduleTimeFromNum" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ScheduleDateToNum" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ScheduleTimeToNum" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ScheduleRingFirst" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CustomerApplication_ScheduleDelivery_OrdersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerApplication_ScheduleDelivery_OrdersResult" type="tns:AddToOrder_SetDeliveryDetailsReply" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ServiceJob_ScheduleDelivery">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SystemID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SystemCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ServiceJobCode" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="BookForEngineerCode" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AutoSearchEngineerGroupCode" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="DeliveryDateNum" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ScheduleTimeTypeCode" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ScheduleTimeFromNum" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ScheduleDateToNum" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ScheduleTimeToNum" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ScheduleRingFirst" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ServiceJob_ScheduleDeliveryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceJob_ScheduleDeliveryResult" type="tns:ServiceJob_ScheduleDelivery_Reply" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceJob_ScheduleDelivery_Reply">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WebReply">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="FieldCallCode" type="s:long" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
       <s:element name="AddToOrder_WithWarranty">
         <s:complexType>
           <s:sequence>
@@ -1742,6 +1909,54 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="Get_FieldCalls_AvailabilityList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SystemID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SystemCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Postcode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="StartDateNum" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="NumberOfDaysAhead" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="PointsRequired" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="NumberOfDaysToFind" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ContainsDelivery" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="ContainsService" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="LimitToEngineerGroupCode" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="RequireCarrierClassCode" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_FieldCalls_AvailabilityListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_FieldCalls_AvailabilityListResult" type="tns:Get_FieldCalls_AvailabilityList_Reply" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Get_FieldCalls_AvailabilityList_Reply">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WebReply">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="AvailableDates" type="tns:ArrayOfDeliveryDateSuggestion" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfDeliveryDateSuggestion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DeliveryDateSuggestion" nillable="true" type="tns:DeliveryDateSuggestion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DeliveryDateSuggestion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DateNum" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="EngineerCode" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MatchLevel" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="EngineerName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="ClearChangeList">
         <s:complexType>
           <s:sequence>
@@ -1909,7 +2124,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="BranchPreferredPaymentMethodCode" type="s:long" />
           <s:element minOccurs="1" maxOccurs="1" name="CollectionRoundCode" type="s:long" />
           <s:element minOccurs="1" maxOccurs="1" name="CollectionRoundPrefDow" type="s:long" />
-          <s:element minOccurs="1" maxOccurs="1" name="FrequencyCode" type="tns:AgreementFrequency" />
+          <s:element minOccurs="1" maxOccurs="1" name="FrequencyCode" type="s:long" />
           <s:element minOccurs="1" maxOccurs="1" name="OpeningCharge" type="s:decimal" />
           <s:element minOccurs="1" maxOccurs="1" name="MinimumDuration" type="s:long" />
           <s:element minOccurs="1" maxOccurs="1" name="CurrentRate" type="s:decimal" />
@@ -1933,11 +2148,12 @@
           <s:element minOccurs="1" maxOccurs="1" name="CardChargeMode_PaymentSoonSMSDaysBefore" type="s:long" />
           <s:element minOccurs="1" maxOccurs="1" name="blUseSpecialChargeMode" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="SpecialCharge_FollowOnRate" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="SpecialCharge_FollowOnFrequency" type="tns:AgreementFrequency" />
+          <s:element minOccurs="1" maxOccurs="1" name="SpecialCharge_FollowOnFrequency" type="s:long" />
           <s:element minOccurs="1" maxOccurs="1" name="SpecialCharge_InitialChargesStartDateNum" type="s:long" />
           <s:element minOccurs="1" maxOccurs="1" name="SpecialCharge_InitialQuantity" type="s:long" />
           <s:element minOccurs="1" maxOccurs="1" name="SpecialCharge_OpeningCharge" type="s:decimal" />
           <s:element minOccurs="0" maxOccurs="1" name="AgreementLinesToAdd" type="tns:ArrayOfRentalAgreementLine" />
+          <s:element minOccurs="1" maxOccurs="1" name="LinkedCustomerApplicationCode" type="s:long" />
         </s:sequence>
       </s:complexType>
       <s:simpleType name="ncDDChargeMode">
@@ -1945,19 +2161,6 @@
           <s:enumeration value="DDChargeMode_AlwaysCurrentRate" />
           <s:enumeration value="DDChargeMode_OverrideAmount" />
           <s:enumeration value="DDChargeMode_ProjectedBalance" />
-        </s:restriction>
-      </s:simpleType>
-      <s:simpleType name="AgreementFrequency">
-        <s:restriction base="s:string">
-          <s:enumeration value="Daily" />
-          <s:enumeration value="Weekly" />
-          <s:enumeration value="Monthly" />
-          <s:enumeration value="BiMonthly" />
-          <s:enumeration value="Quarterly" />
-          <s:enumeration value="SixMonthly" />
-          <s:enumeration value="Annually" />
-          <s:enumeration value="Fortnightly" />
-          <s:enumeration value="FourWeekly" />
         </s:restriction>
       </s:simpleType>
       <s:complexType name="ArrayOfRentalAgreementLine">
@@ -1987,7 +2190,12 @@
       </s:element>
       <s:complexType name="CreateNewRentalAgreementReply">
         <s:complexContent mixed="false">
-          <s:extension base="tns:WebReply" />
+          <s:extension base="tns:WebReply">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="AgreementNumber" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="AgreementCode" type="s:long" />
+            </s:sequence>
+          </s:extension>
         </s:complexContent>
       </s:complexType>
       <s:element name="CreateNewCustomerApplication">
@@ -2015,6 +2223,12 @@
           <s:element minOccurs="0" maxOccurs="1" name="PaymentDetails" type="tns:ApplicationPaymentDetails" />
           <s:element minOccurs="1" maxOccurs="1" name="StatusCode" type="s:long" />
           <s:element minOccurs="1" maxOccurs="1" name="ApplicationCode" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TakenDateNum" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="TakenTimeNum" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="StatusSetDateNum" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="StatusSetTimeNum" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="LinkedInvoiceCodes" type="tns:ArrayOfLong" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="ApplicationPaymentDetails" />
@@ -2034,6 +2248,194 @@
             </s:sequence>
           </s:extension>
         </s:complexContent>
+      </s:complexType>
+      <s:element name="CreateServiceJob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SystemID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SystemCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="objRequest" type="tns:CreateServiceJobRequestDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CreateServiceJobRequestDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="JobToCreate" type="tns:WSServiceJob" />
+          <s:element minOccurs="0" maxOccurs="1" name="JobEntry_FullText" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="JobEntry_HasCharge" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="JobEntry_IncludeOnJobReport" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="JobEntry_Charge" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="JobEntry_CategoryCode" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WSServiceJob">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="BranchCode" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="JobNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StatusCode" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CustomerCode" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartSalespersonCode" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartDateNum" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="SICode" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReportedSICode" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReportedShortFault" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShortFaultDesc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FaultDesc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Chargeable" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Expired" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Deleted" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="DOPDateNum" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="PurchaseDetails" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ChargeToCustomerCode" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReportedByCustomerCode" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerRef" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentJobCode" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderContact" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderContactTelephone" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SaleTypeCode" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartTimeNum" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReportedByPartner" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="PartnerDateNum" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="PartnerTimeNum" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="PartnerEngineerOnSite" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="PartnerEngineerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PartnerEngineerTelephone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PartnerText1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PartnerText2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeadEngineerCode" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="CostCentreCode" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MarketingSourceCode" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreviousRepairJobCode" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConditionNotes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccessoriesNotes" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LinkedCustomerApplicationCode" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateServiceJobResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateServiceJobResult" type="tns:CreateServiceJobReply" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CreateServiceJobReply">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WebReply">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ServiceJobCode" type="s:long" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceJobNumber" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetCustomerAgreementApplications">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SystemID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SystemCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="objRequest" type="tns:GetCustomerAgreementApplicationsRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetCustomerAgreementApplicationsRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CustomerCode" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApplicationCode" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCustomerAgreementApplicationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerAgreementApplicationsResult" type="tns:GetCustomerAgreementApplicationsReply" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetCustomerAgreementApplicationsReply">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WebReply">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="CustomerApplications" type="tns:ArrayOfCustomerAgreementApplication" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfCustomerAgreementApplication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CustomerAgreementApplication" nillable="true" type="tns:CustomerAgreementApplication" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCustomerAgreements">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SystemID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SystemCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CustomerCode" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerAgreementsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerAgreementsResult" type="tns:GetCustomerAgreementsReply" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetCustomerAgreementsReply">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WebReply">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ActiveAgreements" type="tns:ArrayOfNMRentalAgreement" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfNMRentalAgreement">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NMRentalAgreement" nillable="true" type="tns:NMRentalAgreement" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NMRentalAgreement">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:NMRecord">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Customer" type="tns:NMCustomerData" />
+              <s:element minOccurs="1" maxOccurs="1" name="CollectionRoundCode" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="StartDateNum" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="CurrentRate" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="FrequencyCode" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="CurrentBalance" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="NextPaymentAmount" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="NextDebitDue" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="NextPaymentDue" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="LastPaidAmount" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="LastPaidDateNum" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="PaymentMethod" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="AgreementTypeCode" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="CollectionRoundSortIndex" type="s:long" />
+              <s:element minOccurs="0" maxOccurs="1" name="RecentPayments" type="tns:ArrayOfNMAgreementPayment" />
+              <s:element minOccurs="0" maxOccurs="1" name="AgreementCode" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfNMAgreementPayment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NMAgreementPayment" nillable="true" type="tns:NMAgreementPayment" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NMAgreementPayment">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PaidDateNum" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaidAmount" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentMethod" type="s:string" />
+        </s:sequence>
       </s:complexType>
     </s:schema>
   </wsdl:types>
@@ -2103,6 +2505,12 @@
   <wsdl:message name="ValidateLoginSoapOut">
     <wsdl:part name="parameters" element="tns:ValidateLoginResponse" />
   </wsdl:message>
+  <wsdl:message name="GetCustomerDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerDetailsResponse" />
+  </wsdl:message>
   <wsdl:message name="Get_WebDomainDetailsSoapIn">
     <wsdl:part name="parameters" element="tns:Get_WebDomainDetails" />
   </wsdl:message>
@@ -2162,6 +2570,24 @@
   </wsdl:message>
   <wsdl:message name="OrderDelivery_SetToScheduleSoapOut">
     <wsdl:part name="parameters" element="tns:OrderDelivery_SetToScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="CustomerApplication_ScheduleDelivery_AgreementsSoapIn">
+    <wsdl:part name="parameters" element="tns:CustomerApplication_ScheduleDelivery_Agreements" />
+  </wsdl:message>
+  <wsdl:message name="CustomerApplication_ScheduleDelivery_AgreementsSoapOut">
+    <wsdl:part name="parameters" element="tns:CustomerApplication_ScheduleDelivery_AgreementsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CustomerApplication_ScheduleDelivery_OrdersSoapIn">
+    <wsdl:part name="parameters" element="tns:CustomerApplication_ScheduleDelivery_Orders" />
+  </wsdl:message>
+  <wsdl:message name="CustomerApplication_ScheduleDelivery_OrdersSoapOut">
+    <wsdl:part name="parameters" element="tns:CustomerApplication_ScheduleDelivery_OrdersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ServiceJob_ScheduleDeliverySoapIn">
+    <wsdl:part name="parameters" element="tns:ServiceJob_ScheduleDelivery" />
+  </wsdl:message>
+  <wsdl:message name="ServiceJob_ScheduleDeliverySoapOut">
+    <wsdl:part name="parameters" element="tns:ServiceJob_ScheduleDeliveryResponse" />
   </wsdl:message>
   <wsdl:message name="AddToOrder_WithWarrantySoapIn">
     <wsdl:part name="parameters" element="tns:AddToOrder_WithWarranty" />
@@ -2337,6 +2763,12 @@
   <wsdl:message name="GetChangeList2SoapOut">
     <wsdl:part name="parameters" element="tns:GetChangeList2Response" />
   </wsdl:message>
+  <wsdl:message name="Get_FieldCalls_AvailabilityListSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_FieldCalls_AvailabilityList" />
+  </wsdl:message>
+  <wsdl:message name="Get_FieldCalls_AvailabilityListSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_FieldCalls_AvailabilityListResponse" />
+  </wsdl:message>
   <wsdl:message name="ClearChangeListSoapIn">
     <wsdl:part name="parameters" element="tns:ClearChangeList" />
   </wsdl:message>
@@ -2372,6 +2804,24 @@
   </wsdl:message>
   <wsdl:message name="CreateNewCustomerApplicationSoapOut">
     <wsdl:part name="parameters" element="tns:CreateNewCustomerApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateServiceJobSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateServiceJob" />
+  </wsdl:message>
+  <wsdl:message name="CreateServiceJobSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateServiceJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerAgreementApplicationsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerAgreementApplications" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerAgreementApplicationsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerAgreementApplicationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerAgreementsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerAgreements" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerAgreementsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerAgreementsResponse" />
   </wsdl:message>
   <wsdl:portType name="ProductsAndOrderingSoap">
     <wsdl:operation name="About">
@@ -2418,6 +2868,10 @@
       <wsdl:input message="tns:ValidateLoginSoapIn" />
       <wsdl:output message="tns:ValidateLoginSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetCustomerDetails">
+      <wsdl:input message="tns:GetCustomerDetailsSoapIn" />
+      <wsdl:output message="tns:GetCustomerDetailsSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="Get_WebDomainDetails">
       <wsdl:input message="tns:Get_WebDomainDetailsSoapIn" />
       <wsdl:output message="tns:Get_WebDomainDetailsSoapOut" />
@@ -2457,6 +2911,18 @@
     <wsdl:operation name="OrderDelivery_SetToSchedule">
       <wsdl:input message="tns:OrderDelivery_SetToScheduleSoapIn" />
       <wsdl:output message="tns:OrderDelivery_SetToScheduleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomerApplication_ScheduleDelivery_Agreements">
+      <wsdl:input message="tns:CustomerApplication_ScheduleDelivery_AgreementsSoapIn" />
+      <wsdl:output message="tns:CustomerApplication_ScheduleDelivery_AgreementsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomerApplication_ScheduleDelivery_Orders">
+      <wsdl:input message="tns:CustomerApplication_ScheduleDelivery_OrdersSoapIn" />
+      <wsdl:output message="tns:CustomerApplication_ScheduleDelivery_OrdersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ServiceJob_ScheduleDelivery">
+      <wsdl:input message="tns:ServiceJob_ScheduleDeliverySoapIn" />
+      <wsdl:output message="tns:ServiceJob_ScheduleDeliverySoapOut" />
     </wsdl:operation>
     <wsdl:operation name="AddToOrder_WithWarranty">
       <wsdl:input message="tns:AddToOrder_WithWarrantySoapIn" />
@@ -2574,6 +3040,10 @@
       <wsdl:input message="tns:GetChangeList2SoapIn" />
       <wsdl:output message="tns:GetChangeList2SoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="Get_FieldCalls_AvailabilityList">
+      <wsdl:input message="tns:Get_FieldCalls_AvailabilityListSoapIn" />
+      <wsdl:output message="tns:Get_FieldCalls_AvailabilityListSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ClearChangeList">
       <wsdl:input message="tns:ClearChangeListSoapIn" />
       <wsdl:output message="tns:ClearChangeListSoapOut" />
@@ -2597,6 +3067,18 @@
     <wsdl:operation name="CreateNewCustomerApplication">
       <wsdl:input message="tns:CreateNewCustomerApplicationSoapIn" />
       <wsdl:output message="tns:CreateNewCustomerApplicationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateServiceJob">
+      <wsdl:input message="tns:CreateServiceJobSoapIn" />
+      <wsdl:output message="tns:CreateServiceJobSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerAgreementApplications">
+      <wsdl:input message="tns:GetCustomerAgreementApplicationsSoapIn" />
+      <wsdl:output message="tns:GetCustomerAgreementApplicationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerAgreements">
+      <wsdl:input message="tns:GetCustomerAgreementsSoapIn" />
+      <wsdl:output message="tns:GetCustomerAgreementsSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ProductsAndOrderingSoap" type="tns:ProductsAndOrderingSoap">
@@ -2700,6 +3182,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetCustomerDetails">
+      <soap:operation soapAction="http://www.findesolutions.com/webservices/GetCustomerDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Get_WebDomainDetails">
       <soap:operation soapAction="http://www.findesolutions.com/webservices/Get_WebDomainDetails" style="document" />
       <wsdl:input>
@@ -2783,6 +3274,33 @@
     </wsdl:operation>
     <wsdl:operation name="OrderDelivery_SetToSchedule">
       <soap:operation soapAction="http://www.findesolutions.com/webservices/OrderDelivery_SetToSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerApplication_ScheduleDelivery_Agreements">
+      <soap:operation soapAction="http://www.findesolutions.com/webservices/CustomerApplication_ScheduleDelivery_Agreements" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerApplication_ScheduleDelivery_Orders">
+      <soap:operation soapAction="http://www.findesolutions.com/webservices/CustomerApplication_ScheduleDelivery_Orders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceJob_ScheduleDelivery">
+      <soap:operation soapAction="http://www.findesolutions.com/webservices/ServiceJob_ScheduleDelivery" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3051,6 +3569,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Get_FieldCalls_AvailabilityList">
+      <soap:operation soapAction="http://www.findesolutions.com/webservices/Get_FieldCalls_AvailabilityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ClearChangeList">
       <soap:operation soapAction="http://www.findesolutions.com/webservices/ClearChangeList" style="document" />
       <wsdl:input>
@@ -3098,6 +3625,33 @@
     </wsdl:operation>
     <wsdl:operation name="CreateNewCustomerApplication">
       <soap:operation soapAction="http://www.findesolutions.com/webservices/CreateNewCustomerApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateServiceJob">
+      <soap:operation soapAction="http://www.findesolutions.com/webservices/CreateServiceJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerAgreementApplications">
+      <soap:operation soapAction="http://www.findesolutions.com/webservices/GetCustomerAgreementApplications" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerAgreements">
+      <soap:operation soapAction="http://www.findesolutions.com/webservices/GetCustomerAgreements" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3207,6 +3761,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetCustomerDetails">
+      <soap12:operation soapAction="http://www.findesolutions.com/webservices/GetCustomerDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Get_WebDomainDetails">
       <soap12:operation soapAction="http://www.findesolutions.com/webservices/Get_WebDomainDetails" style="document" />
       <wsdl:input>
@@ -3290,6 +3853,33 @@
     </wsdl:operation>
     <wsdl:operation name="OrderDelivery_SetToSchedule">
       <soap12:operation soapAction="http://www.findesolutions.com/webservices/OrderDelivery_SetToSchedule" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerApplication_ScheduleDelivery_Agreements">
+      <soap12:operation soapAction="http://www.findesolutions.com/webservices/CustomerApplication_ScheduleDelivery_Agreements" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerApplication_ScheduleDelivery_Orders">
+      <soap12:operation soapAction="http://www.findesolutions.com/webservices/CustomerApplication_ScheduleDelivery_Orders" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServiceJob_ScheduleDelivery">
+      <soap12:operation soapAction="http://www.findesolutions.com/webservices/ServiceJob_ScheduleDelivery" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -3558,6 +4148,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Get_FieldCalls_AvailabilityList">
+      <soap12:operation soapAction="http://www.findesolutions.com/webservices/Get_FieldCalls_AvailabilityList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ClearChangeList">
       <soap12:operation soapAction="http://www.findesolutions.com/webservices/ClearChangeList" style="document" />
       <wsdl:input>
@@ -3612,13 +4211,40 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CreateServiceJob">
+      <soap12:operation soapAction="http://www.findesolutions.com/webservices/CreateServiceJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerAgreementApplications">
+      <soap12:operation soapAction="http://www.findesolutions.com/webservices/GetCustomerAgreementApplications" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerAgreements">
+      <soap12:operation soapAction="http://www.findesolutions.com/webservices/GetCustomerAgreements" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ProductsAndOrdering">
     <wsdl:port name="ProductsAndOrderingSoap" binding="tns:ProductsAndOrderingSoap">
-      <soap:address location="http://192.168.3.199:90/webservicesTEST/productsandorders.asmx" />
+      <soap:address location="http://warren2.findesolutions.com:90/webservicesTEST/productsandorders.asmx" />
     </wsdl:port>
     <wsdl:port name="ProductsAndOrderingSoap12" binding="tns:ProductsAndOrderingSoap12">
-      <soap12:address location="http://192.168.3.199:90/webservicesTEST/productsandorders.asmx" />
+      <soap12:address location="http://warren2.findesolutions.com:90/webservicesTEST/productsandorders.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

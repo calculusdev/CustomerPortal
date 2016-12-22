@@ -1,0 +1,103 @@
+﻿#logincontainer{
+    width:700px;
+    font-size:1.3em;
+    min-height:500px;
+}
+
+#customerportalcontainer{
+    width:850px;    
+}
+
+#CreateAgreementContainer{
+    width:1100px;
+    font-size:1.2em;
+}
+
+#BookVisitContainer{
+    width:500px;
+    font-size:1.2em;
+}
+
+#btnSubmitLogin{
+    height:40px;
+    width:100px;
+    font-size:0.9em;
+}
+
+.btnBookDelivery {
+    height:40px;
+    width:130px;
+    font-size:0.9em;
+}
+
+#btnLogout {
+    height:40px;
+    width:100px;
+    font-size:1.2em;
+}
+
+#btnCaptureCardDetails{
+    height:40px;
+    width:200px;
+    font-size:0.9em;
+}
+
+#btnCreateAgreement{
+    height:40px;
+    width:100px;
+    font-size:0.9em;
+    margin-top:30px;
+}
+
+#btnBook{
+    height:40px;
+    width:200px;
+    font-size:0.9em;
+    margin-top:30px;
+}
+
+#btnReturn{
+    height:40px;
+    width:200px;
+    font-size:0.9em;
+    margin-top:30px;
+}
+
+#AgreementList, #ApplicationsList, #tblCustomerDetails{
+    font-size:1.2em;
+}
+
+#MainMenu li{
+    float:left;
+    font-size:1.4em;
+    margin:20px;
+}
+
+.tblCustomerDetailsLabel{
+    vertical-align: top;
+}
+
+
+#CustAddress, #CustName, #CustEmail, #CustTel1, #CustTel2 {
+    margin:0px;
+}
+
+#AgentFunctions{
+    font-size:1.2em;
+}
+
+#AvailableDays{
+    font-size:1em;
+}
+
+.CreateAgreementDropdownInput, .CreateAgreementTextInput, .CreateAgreementDateInput{
+    font-size:0.9em;
+}
+
+.CreateAgreementTextInput{
+    width:80px;
+}
+
+.CreateAgreementDateInput{
+    width:150px
+}

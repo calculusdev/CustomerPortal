@@ -24,10 +24,13 @@ Namespace NCWebAPI
      System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.ProductPriceReply)),  _
      System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.CustomerReply)),  _
      System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.ValidateLoginReply)),  _
+     System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.GetCustomerDetailsReply)),  _
      System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.Get_WebDomainDetailsReply)),  _
      System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.Sync_Heartbeat_Reply)),  _
      System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.OrderReply)),  _
      System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.AddToOrder_SetDeliveryDetailsReply)),  _
+     System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.RentalAgreement_ScheduleDelivery_Reply)),  _
+     System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.ServiceJob_ScheduleDelivery_Reply)),  _
      System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.ProductStockReply)),  _
      System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.ProductStockAvailabilityRequestForLIReply)),  _
      System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.ProductListReply)),  _
@@ -43,12 +46,16 @@ Namespace NCWebAPI
      System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.GetOrderStatusReply)),  _
      System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.GetDepartmentDefinitionsReply)),  _
      System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.ChangeListReply)),  _
+     System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.Get_FieldCalls_AvailabilityList_Reply)),  _
      System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.ClearChangeListReply)),  _
      System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.PromoListReply_ARS)),  _
      System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.PromoListReply_Collection)),  _
      System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.DepartmentListReply)),  _
      System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.CreateNewRentalAgreementReply)),  _
-     System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.CreateNewCustomerAgreementApplicationReply))>  _
+     System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.CreateNewCustomerAgreementApplicationReply)),  _
+     System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.CreateServiceJobReply)),  _
+     System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.GetCustomerAgreementApplicationsReply)),  _
+     System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.GetCustomerAgreementsReply))>  _
     Partial Public Class WebReply
         Inherits Object
         Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
@@ -262,6 +269,30 @@ Namespace NCWebAPI
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="GetCustomerDetailsReply", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class GetCustomerDetailsReply
+        Inherits NCWebAPI.WebReply
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CustomerDataField As NCWebAPI.NMCustomerData
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false)>  _
+        Public Property CustomerData() As NCWebAPI.NMCustomerData
+            Get
+                Return Me.CustomerDataField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CustomerDataField, value) <> true) Then
+                    Me.CustomerDataField = value
+                    Me.RaisePropertyChanged("CustomerData")
+                End If
+            End Set
+        End Property
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
      System.Runtime.Serialization.DataContractAttribute(Name:="Get_WebDomainDetailsReply", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
      System.SerializableAttribute()>  _
     Partial Public Class Get_WebDomainDetailsReply
@@ -364,6 +395,37 @@ Namespace NCWebAPI
                 If (Me.OrderCodeField.Equals(value) <> true) Then
                     Me.OrderCodeField = value
                     Me.RaisePropertyChanged("OrderCode")
+                End If
+            End Set
+        End Property
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="RentalAgreement_ScheduleDelivery_Reply", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class RentalAgreement_ScheduleDelivery_Reply
+        Inherits NCWebAPI.WebReply
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="ServiceJob_ScheduleDelivery_Reply", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class ServiceJob_ScheduleDelivery_Reply
+        Inherits NCWebAPI.WebReply
+        
+        Private FieldCallCodeField As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true)>  _
+        Public Property FieldCallCode() As Long
+            Get
+                Return Me.FieldCallCodeField
+            End Get
+            Set
+                If (Me.FieldCallCodeField.Equals(value) <> true) Then
+                    Me.FieldCallCodeField = value
+                    Me.RaisePropertyChanged("FieldCallCode")
                 End If
             End Set
         End Property
@@ -1000,6 +1062,30 @@ Namespace NCWebAPI
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="Get_FieldCalls_AvailabilityList_Reply", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class Get_FieldCalls_AvailabilityList_Reply
+        Inherits NCWebAPI.WebReply
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private AvailableDatesField() As NCWebAPI.DeliveryDateSuggestion
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false)>  _
+        Public Property AvailableDates() As NCWebAPI.DeliveryDateSuggestion()
+            Get
+                Return Me.AvailableDatesField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.AvailableDatesField, value) <> true) Then
+                    Me.AvailableDatesField = value
+                    Me.RaisePropertyChanged("AvailableDates")
+                End If
+            End Set
+        End Property
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
      System.Runtime.Serialization.DataContractAttribute(Name:="ClearChangeListReply", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
      System.SerializableAttribute()>  _
     Partial Public Class ClearChangeListReply
@@ -1084,6 +1170,37 @@ Namespace NCWebAPI
      System.SerializableAttribute()>  _
     Partial Public Class CreateNewRentalAgreementReply
         Inherits NCWebAPI.WebReply
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private AgreementNumberField As String
+        
+        Private AgreementCodeField As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false)>  _
+        Public Property AgreementNumber() As String
+            Get
+                Return Me.AgreementNumberField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.AgreementNumberField, value) <> true) Then
+                    Me.AgreementNumberField = value
+                    Me.RaisePropertyChanged("AgreementNumber")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=1)>  _
+        Public Property AgreementCode() As Long
+            Get
+                Return Me.AgreementCodeField
+            End Get
+            Set
+                If (Me.AgreementCodeField.Equals(value) <> true) Then
+                    Me.AgreementCodeField = value
+                    Me.RaisePropertyChanged("AgreementCode")
+                End If
+            End Set
+        End Property
     End Class
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
@@ -1119,6 +1236,93 @@ Namespace NCWebAPI
                 If (Me.CustomerCodeField.Equals(value) <> true) Then
                     Me.CustomerCodeField = value
                     Me.RaisePropertyChanged("CustomerCode")
+                End If
+            End Set
+        End Property
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="CreateServiceJobReply", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class CreateServiceJobReply
+        Inherits NCWebAPI.WebReply
+        
+        Private ServiceJobCodeField As Long
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ServiceJobNumberField As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true)>  _
+        Public Property ServiceJobCode() As Long
+            Get
+                Return Me.ServiceJobCodeField
+            End Get
+            Set
+                If (Me.ServiceJobCodeField.Equals(value) <> true) Then
+                    Me.ServiceJobCodeField = value
+                    Me.RaisePropertyChanged("ServiceJobCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false)>  _
+        Public Property ServiceJobNumber() As String
+            Get
+                Return Me.ServiceJobNumberField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ServiceJobNumberField, value) <> true) Then
+                    Me.ServiceJobNumberField = value
+                    Me.RaisePropertyChanged("ServiceJobNumber")
+                End If
+            End Set
+        End Property
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="GetCustomerAgreementApplicationsReply", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class GetCustomerAgreementApplicationsReply
+        Inherits NCWebAPI.WebReply
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CustomerApplicationsField() As NCWebAPI.CustomerAgreementApplication
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false)>  _
+        Public Property CustomerApplications() As NCWebAPI.CustomerAgreementApplication()
+            Get
+                Return Me.CustomerApplicationsField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CustomerApplicationsField, value) <> true) Then
+                    Me.CustomerApplicationsField = value
+                    Me.RaisePropertyChanged("CustomerApplications")
+                End If
+            End Set
+        End Property
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="GetCustomerAgreementsReply", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class GetCustomerAgreementsReply
+        Inherits NCWebAPI.WebReply
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ActiveAgreementsField() As NCWebAPI.NMRentalAgreement
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false)>  _
+        Public Property ActiveAgreements() As NCWebAPI.NMRentalAgreement()
+            Get
+                Return Me.ActiveAgreementsField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ActiveAgreementsField, value) <> true) Then
+                    Me.ActiveAgreementsField = value
+                    Me.RaisePropertyChanged("ActiveAgreements")
                 End If
             End Set
         End Property
@@ -1357,6 +1561,747 @@ Namespace NCWebAPI
                 If (Object.ReferenceEquals(Me.CommentsField, value) <> true) Then
                     Me.CommentsField = value
                     Me.RaisePropertyChanged("Comments")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="NMCustomerData", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class NMCustomerData
+        Inherits NCWebAPI.NMAddress
+        
+        Private OverrideVATRateCodeField As Long
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ForenamesField As String
+        
+        Private DateOfBirthDateNumField As Long
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CustomerAccountNumberField As String
+        
+        Private CustomerCategoryCodeField As Long
+        
+        Private IsCashCustomerField As Boolean
+        
+        Private BranchCodeField As Long
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private EmailAddressField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TitleField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private InitialsField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private SurnameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private Mobile1Field As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NameFieldField As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true)>  _
+        Public Property OverrideVATRateCode() As Long
+            Get
+                Return Me.OverrideVATRateCodeField
+            End Get
+            Set
+                If (Me.OverrideVATRateCodeField.Equals(value) <> true) Then
+                    Me.OverrideVATRateCodeField = value
+                    Me.RaisePropertyChanged("OverrideVATRateCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=1)>  _
+        Public Property Forenames() As String
+            Get
+                Return Me.ForenamesField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ForenamesField, value) <> true) Then
+                    Me.ForenamesField = value
+                    Me.RaisePropertyChanged("Forenames")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=2)>  _
+        Public Property DateOfBirthDateNum() As Long
+            Get
+                Return Me.DateOfBirthDateNumField
+            End Get
+            Set
+                If (Me.DateOfBirthDateNumField.Equals(value) <> true) Then
+                    Me.DateOfBirthDateNumField = value
+                    Me.RaisePropertyChanged("DateOfBirthDateNum")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=3)>  _
+        Public Property CustomerAccountNumber() As String
+            Get
+                Return Me.CustomerAccountNumberField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CustomerAccountNumberField, value) <> true) Then
+                    Me.CustomerAccountNumberField = value
+                    Me.RaisePropertyChanged("CustomerAccountNumber")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=4)>  _
+        Public Property CustomerCategoryCode() As Long
+            Get
+                Return Me.CustomerCategoryCodeField
+            End Get
+            Set
+                If (Me.CustomerCategoryCodeField.Equals(value) <> true) Then
+                    Me.CustomerCategoryCodeField = value
+                    Me.RaisePropertyChanged("CustomerCategoryCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=5)>  _
+        Public Property IsCashCustomer() As Boolean
+            Get
+                Return Me.IsCashCustomerField
+            End Get
+            Set
+                If (Me.IsCashCustomerField.Equals(value) <> true) Then
+                    Me.IsCashCustomerField = value
+                    Me.RaisePropertyChanged("IsCashCustomer")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=6)>  _
+        Public Property BranchCode() As Long
+            Get
+                Return Me.BranchCodeField
+            End Get
+            Set
+                If (Me.BranchCodeField.Equals(value) <> true) Then
+                    Me.BranchCodeField = value
+                    Me.RaisePropertyChanged("BranchCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=7)>  _
+        Public Property EmailAddress() As String
+            Get
+                Return Me.EmailAddressField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.EmailAddressField, value) <> true) Then
+                    Me.EmailAddressField = value
+                    Me.RaisePropertyChanged("EmailAddress")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=8)>  _
+        Public Property Title() As String
+            Get
+                Return Me.TitleField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TitleField, value) <> true) Then
+                    Me.TitleField = value
+                    Me.RaisePropertyChanged("Title")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=9)>  _
+        Public Property Initials() As String
+            Get
+                Return Me.InitialsField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.InitialsField, value) <> true) Then
+                    Me.InitialsField = value
+                    Me.RaisePropertyChanged("Initials")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=10)>  _
+        Public Property Surname() As String
+            Get
+                Return Me.SurnameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.SurnameField, value) <> true) Then
+                    Me.SurnameField = value
+                    Me.RaisePropertyChanged("Surname")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=11)>  _
+        Public Property Mobile1() As String
+            Get
+                Return Me.Mobile1Field
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Mobile1Field, value) <> true) Then
+                    Me.Mobile1Field = value
+                    Me.RaisePropertyChanged("Mobile1")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=12)>  _
+        Public Property NameField() As String
+            Get
+                Return Me.NameFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NameFieldField, value) <> true) Then
+                    Me.NameFieldField = value
+                    Me.RaisePropertyChanged("NameField")
+                End If
+            End Set
+        End Property
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="NMRecord", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
+     System.SerializableAttribute(),  _
+     System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.NMRentalAgreement)),  _
+     System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.NMAddress)),  _
+     System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.NMCustomerData))>  _
+    Partial Public Class NMRecord
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        Private CodeField As Long
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true)>  _
+        Public Property Code() As Long
+            Get
+                Return Me.CodeField
+            End Get
+            Set
+                If (Me.CodeField.Equals(value) <> true) Then
+                    Me.CodeField = value
+                    Me.RaisePropertyChanged("Code")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="NMRentalAgreement", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class NMRentalAgreement
+        Inherits NCWebAPI.NMRecord
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CustomerField As NCWebAPI.NMCustomerData
+        
+        Private CollectionRoundCodeField As Long
+        
+        Private StartDateNumField As Long
+        
+        Private CurrentRateField As Decimal
+        
+        Private FrequencyCodeField As Long
+        
+        Private CurrentBalanceField As Decimal
+        
+        Private NextPaymentAmountField As Decimal
+        
+        Private NextDebitDueField As Long
+        
+        Private NextPaymentDueField As Long
+        
+        Private LastPaidAmountField As Decimal
+        
+        Private LastPaidDateNumField As Long
+        
+        Private PaymentMethodField As Long
+        
+        Private AgreementTypeCodeField As Long
+        
+        Private CollectionRoundSortIndexField As Long
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private RecentPaymentsField() As NCWebAPI.NMAgreementPayment
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private AgreementCodeField As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false)>  _
+        Public Property Customer() As NCWebAPI.NMCustomerData
+            Get
+                Return Me.CustomerField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CustomerField, value) <> true) Then
+                    Me.CustomerField = value
+                    Me.RaisePropertyChanged("Customer")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=1)>  _
+        Public Property CollectionRoundCode() As Long
+            Get
+                Return Me.CollectionRoundCodeField
+            End Get
+            Set
+                If (Me.CollectionRoundCodeField.Equals(value) <> true) Then
+                    Me.CollectionRoundCodeField = value
+                    Me.RaisePropertyChanged("CollectionRoundCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=2)>  _
+        Public Property StartDateNum() As Long
+            Get
+                Return Me.StartDateNumField
+            End Get
+            Set
+                If (Me.StartDateNumField.Equals(value) <> true) Then
+                    Me.StartDateNumField = value
+                    Me.RaisePropertyChanged("StartDateNum")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=3)>  _
+        Public Property CurrentRate() As Decimal
+            Get
+                Return Me.CurrentRateField
+            End Get
+            Set
+                If (Me.CurrentRateField.Equals(value) <> true) Then
+                    Me.CurrentRateField = value
+                    Me.RaisePropertyChanged("CurrentRate")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=4)>  _
+        Public Property FrequencyCode() As Long
+            Get
+                Return Me.FrequencyCodeField
+            End Get
+            Set
+                If (Me.FrequencyCodeField.Equals(value) <> true) Then
+                    Me.FrequencyCodeField = value
+                    Me.RaisePropertyChanged("FrequencyCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=5)>  _
+        Public Property CurrentBalance() As Decimal
+            Get
+                Return Me.CurrentBalanceField
+            End Get
+            Set
+                If (Me.CurrentBalanceField.Equals(value) <> true) Then
+                    Me.CurrentBalanceField = value
+                    Me.RaisePropertyChanged("CurrentBalance")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=6)>  _
+        Public Property NextPaymentAmount() As Decimal
+            Get
+                Return Me.NextPaymentAmountField
+            End Get
+            Set
+                If (Me.NextPaymentAmountField.Equals(value) <> true) Then
+                    Me.NextPaymentAmountField = value
+                    Me.RaisePropertyChanged("NextPaymentAmount")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=7)>  _
+        Public Property NextDebitDue() As Long
+            Get
+                Return Me.NextDebitDueField
+            End Get
+            Set
+                If (Me.NextDebitDueField.Equals(value) <> true) Then
+                    Me.NextDebitDueField = value
+                    Me.RaisePropertyChanged("NextDebitDue")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=8)>  _
+        Public Property NextPaymentDue() As Long
+            Get
+                Return Me.NextPaymentDueField
+            End Get
+            Set
+                If (Me.NextPaymentDueField.Equals(value) <> true) Then
+                    Me.NextPaymentDueField = value
+                    Me.RaisePropertyChanged("NextPaymentDue")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=9)>  _
+        Public Property LastPaidAmount() As Decimal
+            Get
+                Return Me.LastPaidAmountField
+            End Get
+            Set
+                If (Me.LastPaidAmountField.Equals(value) <> true) Then
+                    Me.LastPaidAmountField = value
+                    Me.RaisePropertyChanged("LastPaidAmount")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=10)>  _
+        Public Property LastPaidDateNum() As Long
+            Get
+                Return Me.LastPaidDateNumField
+            End Get
+            Set
+                If (Me.LastPaidDateNumField.Equals(value) <> true) Then
+                    Me.LastPaidDateNumField = value
+                    Me.RaisePropertyChanged("LastPaidDateNum")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=11)>  _
+        Public Property PaymentMethod() As Long
+            Get
+                Return Me.PaymentMethodField
+            End Get
+            Set
+                If (Me.PaymentMethodField.Equals(value) <> true) Then
+                    Me.PaymentMethodField = value
+                    Me.RaisePropertyChanged("PaymentMethod")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=12)>  _
+        Public Property AgreementTypeCode() As Long
+            Get
+                Return Me.AgreementTypeCodeField
+            End Get
+            Set
+                If (Me.AgreementTypeCodeField.Equals(value) <> true) Then
+                    Me.AgreementTypeCodeField = value
+                    Me.RaisePropertyChanged("AgreementTypeCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=13)>  _
+        Public Property CollectionRoundSortIndex() As Long
+            Get
+                Return Me.CollectionRoundSortIndexField
+            End Get
+            Set
+                If (Me.CollectionRoundSortIndexField.Equals(value) <> true) Then
+                    Me.CollectionRoundSortIndexField = value
+                    Me.RaisePropertyChanged("CollectionRoundSortIndex")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=14)>  _
+        Public Property RecentPayments() As NCWebAPI.NMAgreementPayment()
+            Get
+                Return Me.RecentPaymentsField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.RecentPaymentsField, value) <> true) Then
+                    Me.RecentPaymentsField = value
+                    Me.RaisePropertyChanged("RecentPayments")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=15)>  _
+        Public Property AgreementCode() As String
+            Get
+                Return Me.AgreementCodeField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.AgreementCodeField, value) <> true) Then
+                    Me.AgreementCodeField = value
+                    Me.RaisePropertyChanged("AgreementCode")
+                End If
+            End Set
+        End Property
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="NMAddress", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
+     System.SerializableAttribute(),  _
+     System.Runtime.Serialization.KnownTypeAttribute(GetType(NCWebAPI.NMCustomerData))>  _
+    Partial Public Class NMAddress
+        Inherits NCWebAPI.NMRecord
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private DescriptionField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private Address1Field As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private Address2Field As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private Address3Field As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private Address4Field As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private Address5Field As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PostCodeField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private Telephone1Field As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private Telephone2Field As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false)>  _
+        Public Property Description() As String
+            Get
+                Return Me.DescriptionField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.DescriptionField, value) <> true) Then
+                    Me.DescriptionField = value
+                    Me.RaisePropertyChanged("Description")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=1)>  _
+        Public Property Address1() As String
+            Get
+                Return Me.Address1Field
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Address1Field, value) <> true) Then
+                    Me.Address1Field = value
+                    Me.RaisePropertyChanged("Address1")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=2)>  _
+        Public Property Address2() As String
+            Get
+                Return Me.Address2Field
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Address2Field, value) <> true) Then
+                    Me.Address2Field = value
+                    Me.RaisePropertyChanged("Address2")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=3)>  _
+        Public Property Address3() As String
+            Get
+                Return Me.Address3Field
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Address3Field, value) <> true) Then
+                    Me.Address3Field = value
+                    Me.RaisePropertyChanged("Address3")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=4)>  _
+        Public Property Address4() As String
+            Get
+                Return Me.Address4Field
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Address4Field, value) <> true) Then
+                    Me.Address4Field = value
+                    Me.RaisePropertyChanged("Address4")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=5)>  _
+        Public Property Address5() As String
+            Get
+                Return Me.Address5Field
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Address5Field, value) <> true) Then
+                    Me.Address5Field = value
+                    Me.RaisePropertyChanged("Address5")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=6)>  _
+        Public Property PostCode() As String
+            Get
+                Return Me.PostCodeField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.PostCodeField, value) <> true) Then
+                    Me.PostCodeField = value
+                    Me.RaisePropertyChanged("PostCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=7)>  _
+        Public Property Telephone1() As String
+            Get
+                Return Me.Telephone1Field
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Telephone1Field, value) <> true) Then
+                    Me.Telephone1Field = value
+                    Me.RaisePropertyChanged("Telephone1")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=8)>  _
+        Public Property Telephone2() As String
+            Get
+                Return Me.Telephone2Field
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Telephone2Field, value) <> true) Then
+                    Me.Telephone2Field = value
+                    Me.RaisePropertyChanged("Telephone2")
+                End If
+            End Set
+        End Property
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="NMAgreementPayment", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class NMAgreementPayment
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        Private PaidDateNumField As Long
+        
+        Private PaidAmountField As Decimal
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PaymentMethodField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true)>  _
+        Public Property PaidDateNum() As Long
+            Get
+                Return Me.PaidDateNumField
+            End Get
+            Set
+                If (Me.PaidDateNumField.Equals(value) <> true) Then
+                    Me.PaidDateNumField = value
+                    Me.RaisePropertyChanged("PaidDateNum")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=1)>  _
+        Public Property PaidAmount() As Decimal
+            Get
+                Return Me.PaidAmountField
+            End Get
+            Set
+                If (Me.PaidAmountField.Equals(value) <> true) Then
+                    Me.PaidAmountField = value
+                    Me.RaisePropertyChanged("PaidAmount")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=2)>  _
+        Public Property PaymentMethod() As String
+            Get
+                Return Me.PaymentMethodField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.PaymentMethodField, value) <> true) Then
+                    Me.PaymentMethodField = value
+                    Me.RaisePropertyChanged("PaymentMethod")
                 End If
             End Set
         End Property
@@ -5749,6 +6694,98 @@ Namespace NCWebAPI
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="DeliveryDateSuggestion", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class DeliveryDateSuggestion
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        Private DateNumField As Long
+        
+        Private EngineerCodeField As Long
+        
+        Private MatchLevelField As Long
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private EngineerNameField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true)>  _
+        Public Property DateNum() As Long
+            Get
+                Return Me.DateNumField
+            End Get
+            Set
+                If (Me.DateNumField.Equals(value) <> true) Then
+                    Me.DateNumField = value
+                    Me.RaisePropertyChanged("DateNum")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true)>  _
+        Public Property EngineerCode() As Long
+            Get
+                Return Me.EngineerCodeField
+            End Get
+            Set
+                If (Me.EngineerCodeField.Equals(value) <> true) Then
+                    Me.EngineerCodeField = value
+                    Me.RaisePropertyChanged("EngineerCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true)>  _
+        Public Property MatchLevel() As Long
+            Get
+                Return Me.MatchLevelField
+            End Get
+            Set
+                If (Me.MatchLevelField.Equals(value) <> true) Then
+                    Me.MatchLevelField = value
+                    Me.RaisePropertyChanged("MatchLevel")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=3)>  _
+        Public Property EngineerName() As String
+            Get
+                Return Me.EngineerNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.EngineerNameField, value) <> true) Then
+                    Me.EngineerNameField = value
+                    Me.RaisePropertyChanged("EngineerName")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
      System.Runtime.Serialization.DataContractAttribute(Name:="Promo", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
      System.SerializableAttribute()>  _
     Partial Public Class Promo
@@ -5932,6 +6969,434 @@ Namespace NCWebAPI
                 If (Me.ManfCodeField.Equals(value) <> true) Then
                     Me.ManfCodeField = value
                     Me.RaisePropertyChanged("ManfCode")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="CustomerAgreementApplication", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class CustomerAgreementApplication
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        Private CustomerCodeField As Long
+        
+        Private NewCustomerCodeField As Long
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private OpeningCommentField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ItemsAppliedForField() As NCWebAPI.RentalAgreementLine
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PaymentDetailsField As NCWebAPI.ApplicationPaymentDetails
+        
+        Private StatusCodeField As Long
+        
+        Private ApplicationCodeField As Long
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ApplicationNumberField As String
+        
+        Private TakenDateNumField As Long
+        
+        Private TakenTimeNumField As Long
+        
+        Private StatusSetDateNumField As Long
+        
+        Private StatusSetTimeNumField As Long
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private LinkedInvoiceCodesField As NCWebAPI.ArrayOfLong
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true)>  _
+        Public Property CustomerCode() As Long
+            Get
+                Return Me.CustomerCodeField
+            End Get
+            Set
+                If (Me.CustomerCodeField.Equals(value) <> true) Then
+                    Me.CustomerCodeField = value
+                    Me.RaisePropertyChanged("CustomerCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true)>  _
+        Public Property NewCustomerCode() As Long
+            Get
+                Return Me.NewCustomerCodeField
+            End Get
+            Set
+                If (Me.NewCustomerCodeField.Equals(value) <> true) Then
+                    Me.NewCustomerCodeField = value
+                    Me.RaisePropertyChanged("NewCustomerCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false)>  _
+        Public Property OpeningComment() As String
+            Get
+                Return Me.OpeningCommentField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.OpeningCommentField, value) <> true) Then
+                    Me.OpeningCommentField = value
+                    Me.RaisePropertyChanged("OpeningComment")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=3)>  _
+        Public Property ItemsAppliedFor() As NCWebAPI.RentalAgreementLine()
+            Get
+                Return Me.ItemsAppliedForField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ItemsAppliedForField, value) <> true) Then
+                    Me.ItemsAppliedForField = value
+                    Me.RaisePropertyChanged("ItemsAppliedFor")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=4)>  _
+        Public Property PaymentDetails() As NCWebAPI.ApplicationPaymentDetails
+            Get
+                Return Me.PaymentDetailsField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.PaymentDetailsField, value) <> true) Then
+                    Me.PaymentDetailsField = value
+                    Me.RaisePropertyChanged("PaymentDetails")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=5)>  _
+        Public Property StatusCode() As Long
+            Get
+                Return Me.StatusCodeField
+            End Get
+            Set
+                If (Me.StatusCodeField.Equals(value) <> true) Then
+                    Me.StatusCodeField = value
+                    Me.RaisePropertyChanged("StatusCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=6)>  _
+        Public Property ApplicationCode() As Long
+            Get
+                Return Me.ApplicationCodeField
+            End Get
+            Set
+                If (Me.ApplicationCodeField.Equals(value) <> true) Then
+                    Me.ApplicationCodeField = value
+                    Me.RaisePropertyChanged("ApplicationCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=7)>  _
+        Public Property ApplicationNumber() As String
+            Get
+                Return Me.ApplicationNumberField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ApplicationNumberField, value) <> true) Then
+                    Me.ApplicationNumberField = value
+                    Me.RaisePropertyChanged("ApplicationNumber")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=8)>  _
+        Public Property TakenDateNum() As Long
+            Get
+                Return Me.TakenDateNumField
+            End Get
+            Set
+                If (Me.TakenDateNumField.Equals(value) <> true) Then
+                    Me.TakenDateNumField = value
+                    Me.RaisePropertyChanged("TakenDateNum")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=9)>  _
+        Public Property TakenTimeNum() As Long
+            Get
+                Return Me.TakenTimeNumField
+            End Get
+            Set
+                If (Me.TakenTimeNumField.Equals(value) <> true) Then
+                    Me.TakenTimeNumField = value
+                    Me.RaisePropertyChanged("TakenTimeNum")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=10)>  _
+        Public Property StatusSetDateNum() As Long
+            Get
+                Return Me.StatusSetDateNumField
+            End Get
+            Set
+                If (Me.StatusSetDateNumField.Equals(value) <> true) Then
+                    Me.StatusSetDateNumField = value
+                    Me.RaisePropertyChanged("StatusSetDateNum")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=11)>  _
+        Public Property StatusSetTimeNum() As Long
+            Get
+                Return Me.StatusSetTimeNumField
+            End Get
+            Set
+                If (Me.StatusSetTimeNumField.Equals(value) <> true) Then
+                    Me.StatusSetTimeNumField = value
+                    Me.RaisePropertyChanged("StatusSetTimeNum")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=12)>  _
+        Public Property LinkedInvoiceCodes() As NCWebAPI.ArrayOfLong
+            Get
+                Return Me.LinkedInvoiceCodesField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.LinkedInvoiceCodesField, value) <> true) Then
+                    Me.LinkedInvoiceCodesField = value
+                    Me.RaisePropertyChanged("LinkedInvoiceCodes")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="ApplicationPaymentDetails", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class ApplicationPaymentDetails
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="RentalAgreementLine", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class RentalAgreementLine
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        Private ListedItemCodeField As Long
+        
+        Private SpecificItemCodeField As Long
+        
+        Private QuantityField As Decimal
+        
+        Private TotalLinePriceField As Decimal
+        
+        Private SCStockRoomCodeField As Long
+        
+        Private PendingFieldCallEntryCodeField As Long
+        
+        Private MaintainItemExtra_SupplierCodeField As Long
+        
+        Private MaintainItemExtra_RecurringCostExField As Decimal
+        
+        Private MaintainItemExtra_NCAPurchaseAccountCodeField As Long
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true)>  _
+        Public Property ListedItemCode() As Long
+            Get
+                Return Me.ListedItemCodeField
+            End Get
+            Set
+                If (Me.ListedItemCodeField.Equals(value) <> true) Then
+                    Me.ListedItemCodeField = value
+                    Me.RaisePropertyChanged("ListedItemCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true)>  _
+        Public Property SpecificItemCode() As Long
+            Get
+                Return Me.SpecificItemCodeField
+            End Get
+            Set
+                If (Me.SpecificItemCodeField.Equals(value) <> true) Then
+                    Me.SpecificItemCodeField = value
+                    Me.RaisePropertyChanged("SpecificItemCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=2)>  _
+        Public Property Quantity() As Decimal
+            Get
+                Return Me.QuantityField
+            End Get
+            Set
+                If (Me.QuantityField.Equals(value) <> true) Then
+                    Me.QuantityField = value
+                    Me.RaisePropertyChanged("Quantity")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=3)>  _
+        Public Property TotalLinePrice() As Decimal
+            Get
+                Return Me.TotalLinePriceField
+            End Get
+            Set
+                If (Me.TotalLinePriceField.Equals(value) <> true) Then
+                    Me.TotalLinePriceField = value
+                    Me.RaisePropertyChanged("TotalLinePrice")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=4)>  _
+        Public Property SCStockRoomCode() As Long
+            Get
+                Return Me.SCStockRoomCodeField
+            End Get
+            Set
+                If (Me.SCStockRoomCodeField.Equals(value) <> true) Then
+                    Me.SCStockRoomCodeField = value
+                    Me.RaisePropertyChanged("SCStockRoomCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=5)>  _
+        Public Property PendingFieldCallEntryCode() As Long
+            Get
+                Return Me.PendingFieldCallEntryCodeField
+            End Get
+            Set
+                If (Me.PendingFieldCallEntryCodeField.Equals(value) <> true) Then
+                    Me.PendingFieldCallEntryCodeField = value
+                    Me.RaisePropertyChanged("PendingFieldCallEntryCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=6)>  _
+        Public Property MaintainItemExtra_SupplierCode() As Long
+            Get
+                Return Me.MaintainItemExtra_SupplierCodeField
+            End Get
+            Set
+                If (Me.MaintainItemExtra_SupplierCodeField.Equals(value) <> true) Then
+                    Me.MaintainItemExtra_SupplierCodeField = value
+                    Me.RaisePropertyChanged("MaintainItemExtra_SupplierCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=7)>  _
+        Public Property MaintainItemExtra_RecurringCostEx() As Decimal
+            Get
+                Return Me.MaintainItemExtra_RecurringCostExField
+            End Get
+            Set
+                If (Me.MaintainItemExtra_RecurringCostExField.Equals(value) <> true) Then
+                    Me.MaintainItemExtra_RecurringCostExField = value
+                    Me.RaisePropertyChanged("MaintainItemExtra_RecurringCostEx")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=8)>  _
+        Public Property MaintainItemExtra_NCAPurchaseAccountCode() As Long
+            Get
+                Return Me.MaintainItemExtra_NCAPurchaseAccountCodeField
+            End Get
+            Set
+                If (Me.MaintainItemExtra_NCAPurchaseAccountCodeField.Equals(value) <> true) Then
+                    Me.MaintainItemExtra_NCAPurchaseAccountCodeField = value
+                    Me.RaisePropertyChanged("MaintainItemExtra_NCAPurchaseAccountCode")
                 End If
             End Set
         End Property
@@ -6236,7 +7701,7 @@ Namespace NCWebAPI
         
         Private CollectionRoundPrefDowField As Long
         
-        Private FrequencyCodeField As NCWebAPI.AgreementFrequency
+        Private FrequencyCodeField As Long
         
         Private OpeningChargeField As Decimal
         
@@ -6285,7 +7750,7 @@ Namespace NCWebAPI
         
         Private SpecialCharge_FollowOnRateField As Decimal
         
-        Private SpecialCharge_FollowOnFrequencyField As NCWebAPI.AgreementFrequency
+        Private SpecialCharge_FollowOnFrequencyField As Long
         
         Private SpecialCharge_InitialChargesStartDateNumField As Long
         
@@ -6295,6 +7760,8 @@ Namespace NCWebAPI
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private AgreementLinesToAddField() As NCWebAPI.RentalAgreementLine
+        
+        Private LinkedCustomerApplicationCodeField As Long
         
         <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
@@ -6723,7 +8190,7 @@ Namespace NCWebAPI
         End Property
         
         <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=32)>  _
-        Public Property FrequencyCode() As NCWebAPI.AgreementFrequency
+        Public Property FrequencyCode() As Long
             Get
                 Return Me.FrequencyCodeField
             End Get
@@ -7035,7 +8502,7 @@ Namespace NCWebAPI
         End Property
         
         <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=56)>  _
-        Public Property SpecialCharge_FollowOnFrequency() As NCWebAPI.AgreementFrequency
+        Public Property SpecialCharge_FollowOnFrequency() As Long
             Get
                 Return Me.SpecialCharge_FollowOnFrequencyField
             End Get
@@ -7099,6 +8566,19 @@ Namespace NCWebAPI
             End Set
         End Property
         
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=61)>  _
+        Public Property LinkedCustomerApplicationCode() As Long
+            Get
+                Return Me.LinkedCustomerApplicationCodeField
+            End Get
+            Set
+                If (Me.LinkedCustomerApplicationCodeField.Equals(value) <> true) Then
+                    Me.LinkedCustomerApplicationCodeField = value
+                    Me.RaisePropertyChanged("LinkedCustomerApplicationCode")
+                End If
+            End Set
+        End Property
+        
         Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
         
         Protected Sub RaisePropertyChanged(ByVal propertyName As String)
@@ -7122,204 +8602,6 @@ Namespace NCWebAPI
         <System.Runtime.Serialization.EnumMemberAttribute()>  _
         DDChargeMode_ProjectedBalance = 2
     End Enum
-    
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
-     System.Runtime.Serialization.DataContractAttribute(Name:="AgreementFrequency", [Namespace]:="http://www.findesolutions.com/webservices/")>  _
-    Public Enum AgreementFrequency As Integer
-        
-        <System.Runtime.Serialization.EnumMemberAttribute()>  _
-        Daily = 0
-        
-        <System.Runtime.Serialization.EnumMemberAttribute()>  _
-        Weekly = 1
-        
-        <System.Runtime.Serialization.EnumMemberAttribute()>  _
-        Monthly = 2
-        
-        <System.Runtime.Serialization.EnumMemberAttribute()>  _
-        BiMonthly = 3
-        
-        <System.Runtime.Serialization.EnumMemberAttribute()>  _
-        Quarterly = 4
-        
-        <System.Runtime.Serialization.EnumMemberAttribute()>  _
-        SixMonthly = 5
-        
-        <System.Runtime.Serialization.EnumMemberAttribute()>  _
-        Annually = 6
-        
-        <System.Runtime.Serialization.EnumMemberAttribute()>  _
-        Fortnightly = 7
-        
-        <System.Runtime.Serialization.EnumMemberAttribute()>  _
-        FourWeekly = 8
-    End Enum
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
-     System.Runtime.Serialization.DataContractAttribute(Name:="RentalAgreementLine", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
-     System.SerializableAttribute()>  _
-    Partial Public Class RentalAgreementLine
-        Inherits Object
-        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
-        
-        <System.NonSerializedAttribute()>  _
-        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
-        
-        Private ListedItemCodeField As Long
-        
-        Private SpecificItemCodeField As Long
-        
-        Private QuantityField As Decimal
-        
-        Private TotalLinePriceField As Decimal
-        
-        Private SCStockRoomCodeField As Long
-        
-        Private PendingFieldCallEntryCodeField As Long
-        
-        Private MaintainItemExtra_SupplierCodeField As Long
-        
-        Private MaintainItemExtra_RecurringCostExField As Decimal
-        
-        Private MaintainItemExtra_NCAPurchaseAccountCodeField As Long
-        
-        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
-        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
-            Get
-                Return Me.extensionDataField
-            End Get
-            Set
-                Me.extensionDataField = value
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true)>  _
-        Public Property ListedItemCode() As Long
-            Get
-                Return Me.ListedItemCodeField
-            End Get
-            Set
-                If (Me.ListedItemCodeField.Equals(value) <> true) Then
-                    Me.ListedItemCodeField = value
-                    Me.RaisePropertyChanged("ListedItemCode")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true)>  _
-        Public Property SpecificItemCode() As Long
-            Get
-                Return Me.SpecificItemCodeField
-            End Get
-            Set
-                If (Me.SpecificItemCodeField.Equals(value) <> true) Then
-                    Me.SpecificItemCodeField = value
-                    Me.RaisePropertyChanged("SpecificItemCode")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=2)>  _
-        Public Property Quantity() As Decimal
-            Get
-                Return Me.QuantityField
-            End Get
-            Set
-                If (Me.QuantityField.Equals(value) <> true) Then
-                    Me.QuantityField = value
-                    Me.RaisePropertyChanged("Quantity")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=3)>  _
-        Public Property TotalLinePrice() As Decimal
-            Get
-                Return Me.TotalLinePriceField
-            End Get
-            Set
-                If (Me.TotalLinePriceField.Equals(value) <> true) Then
-                    Me.TotalLinePriceField = value
-                    Me.RaisePropertyChanged("TotalLinePrice")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=4)>  _
-        Public Property SCStockRoomCode() As Long
-            Get
-                Return Me.SCStockRoomCodeField
-            End Get
-            Set
-                If (Me.SCStockRoomCodeField.Equals(value) <> true) Then
-                    Me.SCStockRoomCodeField = value
-                    Me.RaisePropertyChanged("SCStockRoomCode")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=5)>  _
-        Public Property PendingFieldCallEntryCode() As Long
-            Get
-                Return Me.PendingFieldCallEntryCodeField
-            End Get
-            Set
-                If (Me.PendingFieldCallEntryCodeField.Equals(value) <> true) Then
-                    Me.PendingFieldCallEntryCodeField = value
-                    Me.RaisePropertyChanged("PendingFieldCallEntryCode")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=6)>  _
-        Public Property MaintainItemExtra_SupplierCode() As Long
-            Get
-                Return Me.MaintainItemExtra_SupplierCodeField
-            End Get
-            Set
-                If (Me.MaintainItemExtra_SupplierCodeField.Equals(value) <> true) Then
-                    Me.MaintainItemExtra_SupplierCodeField = value
-                    Me.RaisePropertyChanged("MaintainItemExtra_SupplierCode")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=7)>  _
-        Public Property MaintainItemExtra_RecurringCostEx() As Decimal
-            Get
-                Return Me.MaintainItemExtra_RecurringCostExField
-            End Get
-            Set
-                If (Me.MaintainItemExtra_RecurringCostExField.Equals(value) <> true) Then
-                    Me.MaintainItemExtra_RecurringCostExField = value
-                    Me.RaisePropertyChanged("MaintainItemExtra_RecurringCostEx")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=8)>  _
-        Public Property MaintainItemExtra_NCAPurchaseAccountCode() As Long
-            Get
-                Return Me.MaintainItemExtra_NCAPurchaseAccountCodeField
-            End Get
-            Set
-                If (Me.MaintainItemExtra_NCAPurchaseAccountCodeField.Equals(value) <> true) Then
-                    Me.MaintainItemExtra_NCAPurchaseAccountCodeField = value
-                    Me.RaisePropertyChanged("MaintainItemExtra_NCAPurchaseAccountCode")
-                End If
-            End Set
-        End Property
-        
-        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
-        
-        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
-            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
-            If (Not (propertyChanged) Is Nothing) Then
-                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
-            End If
-        End Sub
-    End Class
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
@@ -7370,9 +8652,778 @@ Namespace NCWebAPI
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
-     System.Runtime.Serialization.DataContractAttribute(Name:="CustomerAgreementApplication", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="CreateServiceJobRequestDetails", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
      System.SerializableAttribute()>  _
-    Partial Public Class CustomerAgreementApplication
+    Partial Public Class CreateServiceJobRequestDetails
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private JobToCreateField As NCWebAPI.WSServiceJob
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private JobEntry_FullTextField As String
+        
+        Private JobEntry_HasChargeField As Boolean
+        
+        Private JobEntry_IncludeOnJobReportField As Boolean
+        
+        Private JobEntry_ChargeField As Decimal
+        
+        Private JobEntry_CategoryCodeField As Long
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false)>  _
+        Public Property JobToCreate() As NCWebAPI.WSServiceJob
+            Get
+                Return Me.JobToCreateField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.JobToCreateField, value) <> true) Then
+                    Me.JobToCreateField = value
+                    Me.RaisePropertyChanged("JobToCreate")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=1)>  _
+        Public Property JobEntry_FullText() As String
+            Get
+                Return Me.JobEntry_FullTextField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.JobEntry_FullTextField, value) <> true) Then
+                    Me.JobEntry_FullTextField = value
+                    Me.RaisePropertyChanged("JobEntry_FullText")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=2)>  _
+        Public Property JobEntry_HasCharge() As Boolean
+            Get
+                Return Me.JobEntry_HasChargeField
+            End Get
+            Set
+                If (Me.JobEntry_HasChargeField.Equals(value) <> true) Then
+                    Me.JobEntry_HasChargeField = value
+                    Me.RaisePropertyChanged("JobEntry_HasCharge")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=3)>  _
+        Public Property JobEntry_IncludeOnJobReport() As Boolean
+            Get
+                Return Me.JobEntry_IncludeOnJobReportField
+            End Get
+            Set
+                If (Me.JobEntry_IncludeOnJobReportField.Equals(value) <> true) Then
+                    Me.JobEntry_IncludeOnJobReportField = value
+                    Me.RaisePropertyChanged("JobEntry_IncludeOnJobReport")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=4)>  _
+        Public Property JobEntry_Charge() As Decimal
+            Get
+                Return Me.JobEntry_ChargeField
+            End Get
+            Set
+                If (Me.JobEntry_ChargeField.Equals(value) <> true) Then
+                    Me.JobEntry_ChargeField = value
+                    Me.RaisePropertyChanged("JobEntry_Charge")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=5)>  _
+        Public Property JobEntry_CategoryCode() As Long
+            Get
+                Return Me.JobEntry_CategoryCodeField
+            End Get
+            Set
+                If (Me.JobEntry_CategoryCodeField.Equals(value) <> true) Then
+                    Me.JobEntry_CategoryCodeField = value
+                    Me.RaisePropertyChanged("JobEntry_CategoryCode")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="WSServiceJob", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class WSServiceJob
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        Private BranchCodeField As Long
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private JobNumberField As String
+        
+        Private StatusCodeField As Long
+        
+        Private CustomerCodeField As Long
+        
+        Private StartSalespersonCodeField As Long
+        
+        Private StartDateNumField As Long
+        
+        Private StartDateTimeField As Date
+        
+        Private SICodeField As Long
+        
+        Private ReportedSICodeField As Long
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ReportedShortFaultField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ShortFaultDescField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private FaultDescField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ChargeableField As String
+        
+        Private ExpiredField As Long
+        
+        Private DeletedField As Long
+        
+        Private DOPDateNumField As Long
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PurchaseDetailsField As String
+        
+        Private ChargeToCustomerCodeField As Long
+        
+        Private ReportedByCustomerCodeField As Long
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CustomerRefField As String
+        
+        Private ParentJobCodeField As Long
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private OrderContactField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private OrderContactTelephoneField As String
+        
+        Private SaleTypeCodeField As Long
+        
+        Private StartTimeNumField As Long
+        
+        Private ReportedByPartnerField As Long
+        
+        Private PartnerDateNumField As Long
+        
+        Private PartnerTimeNumField As Long
+        
+        Private PartnerEngineerOnSiteField As Long
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PartnerEngineerNameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PartnerEngineerTelephoneField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PartnerText1Field As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PartnerText2Field As String
+        
+        Private LeadEngineerCodeField As Long
+        
+        Private CostCentreCodeField As Long
+        
+        Private MarketingSourceCodeField As Long
+        
+        Private PreviousRepairJobCodeField As Long
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ConditionNotesField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private AccessoriesNotesField As String
+        
+        Private LinkedCustomerApplicationCodeField As Long
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true)>  _
+        Public Property BranchCode() As Long
+            Get
+                Return Me.BranchCodeField
+            End Get
+            Set
+                If (Me.BranchCodeField.Equals(value) <> true) Then
+                    Me.BranchCodeField = value
+                    Me.RaisePropertyChanged("BranchCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false)>  _
+        Public Property JobNumber() As String
+            Get
+                Return Me.JobNumberField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.JobNumberField, value) <> true) Then
+                    Me.JobNumberField = value
+                    Me.RaisePropertyChanged("JobNumber")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true)>  _
+        Public Property StatusCode() As Long
+            Get
+                Return Me.StatusCodeField
+            End Get
+            Set
+                If (Me.StatusCodeField.Equals(value) <> true) Then
+                    Me.StatusCodeField = value
+                    Me.RaisePropertyChanged("StatusCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=3)>  _
+        Public Property CustomerCode() As Long
+            Get
+                Return Me.CustomerCodeField
+            End Get
+            Set
+                If (Me.CustomerCodeField.Equals(value) <> true) Then
+                    Me.CustomerCodeField = value
+                    Me.RaisePropertyChanged("CustomerCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=4)>  _
+        Public Property StartSalespersonCode() As Long
+            Get
+                Return Me.StartSalespersonCodeField
+            End Get
+            Set
+                If (Me.StartSalespersonCodeField.Equals(value) <> true) Then
+                    Me.StartSalespersonCodeField = value
+                    Me.RaisePropertyChanged("StartSalespersonCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=5)>  _
+        Public Property StartDateNum() As Long
+            Get
+                Return Me.StartDateNumField
+            End Get
+            Set
+                If (Me.StartDateNumField.Equals(value) <> true) Then
+                    Me.StartDateNumField = value
+                    Me.RaisePropertyChanged("StartDateNum")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=6)>  _
+        Public Property StartDateTime() As Date
+            Get
+                Return Me.StartDateTimeField
+            End Get
+            Set
+                If (Me.StartDateTimeField.Equals(value) <> true) Then
+                    Me.StartDateTimeField = value
+                    Me.RaisePropertyChanged("StartDateTime")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=7)>  _
+        Public Property SICode() As Long
+            Get
+                Return Me.SICodeField
+            End Get
+            Set
+                If (Me.SICodeField.Equals(value) <> true) Then
+                    Me.SICodeField = value
+                    Me.RaisePropertyChanged("SICode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=8)>  _
+        Public Property ReportedSICode() As Long
+            Get
+                Return Me.ReportedSICodeField
+            End Get
+            Set
+                If (Me.ReportedSICodeField.Equals(value) <> true) Then
+                    Me.ReportedSICodeField = value
+                    Me.RaisePropertyChanged("ReportedSICode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=9)>  _
+        Public Property ReportedShortFault() As String
+            Get
+                Return Me.ReportedShortFaultField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ReportedShortFaultField, value) <> true) Then
+                    Me.ReportedShortFaultField = value
+                    Me.RaisePropertyChanged("ReportedShortFault")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=10)>  _
+        Public Property ShortFaultDesc() As String
+            Get
+                Return Me.ShortFaultDescField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ShortFaultDescField, value) <> true) Then
+                    Me.ShortFaultDescField = value
+                    Me.RaisePropertyChanged("ShortFaultDesc")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=11)>  _
+        Public Property FaultDesc() As String
+            Get
+                Return Me.FaultDescField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.FaultDescField, value) <> true) Then
+                    Me.FaultDescField = value
+                    Me.RaisePropertyChanged("FaultDesc")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=12)>  _
+        Public Property Chargeable() As String
+            Get
+                Return Me.ChargeableField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ChargeableField, value) <> true) Then
+                    Me.ChargeableField = value
+                    Me.RaisePropertyChanged("Chargeable")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=13)>  _
+        Public Property Expired() As Long
+            Get
+                Return Me.ExpiredField
+            End Get
+            Set
+                If (Me.ExpiredField.Equals(value) <> true) Then
+                    Me.ExpiredField = value
+                    Me.RaisePropertyChanged("Expired")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=14)>  _
+        Public Property Deleted() As Long
+            Get
+                Return Me.DeletedField
+            End Get
+            Set
+                If (Me.DeletedField.Equals(value) <> true) Then
+                    Me.DeletedField = value
+                    Me.RaisePropertyChanged("Deleted")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=15)>  _
+        Public Property DOPDateNum() As Long
+            Get
+                Return Me.DOPDateNumField
+            End Get
+            Set
+                If (Me.DOPDateNumField.Equals(value) <> true) Then
+                    Me.DOPDateNumField = value
+                    Me.RaisePropertyChanged("DOPDateNum")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=16)>  _
+        Public Property PurchaseDetails() As String
+            Get
+                Return Me.PurchaseDetailsField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.PurchaseDetailsField, value) <> true) Then
+                    Me.PurchaseDetailsField = value
+                    Me.RaisePropertyChanged("PurchaseDetails")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=17)>  _
+        Public Property ChargeToCustomerCode() As Long
+            Get
+                Return Me.ChargeToCustomerCodeField
+            End Get
+            Set
+                If (Me.ChargeToCustomerCodeField.Equals(value) <> true) Then
+                    Me.ChargeToCustomerCodeField = value
+                    Me.RaisePropertyChanged("ChargeToCustomerCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=18)>  _
+        Public Property ReportedByCustomerCode() As Long
+            Get
+                Return Me.ReportedByCustomerCodeField
+            End Get
+            Set
+                If (Me.ReportedByCustomerCodeField.Equals(value) <> true) Then
+                    Me.ReportedByCustomerCodeField = value
+                    Me.RaisePropertyChanged("ReportedByCustomerCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=19)>  _
+        Public Property CustomerRef() As String
+            Get
+                Return Me.CustomerRefField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CustomerRefField, value) <> true) Then
+                    Me.CustomerRefField = value
+                    Me.RaisePropertyChanged("CustomerRef")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=20)>  _
+        Public Property ParentJobCode() As Long
+            Get
+                Return Me.ParentJobCodeField
+            End Get
+            Set
+                If (Me.ParentJobCodeField.Equals(value) <> true) Then
+                    Me.ParentJobCodeField = value
+                    Me.RaisePropertyChanged("ParentJobCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=21)>  _
+        Public Property OrderContact() As String
+            Get
+                Return Me.OrderContactField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.OrderContactField, value) <> true) Then
+                    Me.OrderContactField = value
+                    Me.RaisePropertyChanged("OrderContact")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=22)>  _
+        Public Property OrderContactTelephone() As String
+            Get
+                Return Me.OrderContactTelephoneField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.OrderContactTelephoneField, value) <> true) Then
+                    Me.OrderContactTelephoneField = value
+                    Me.RaisePropertyChanged("OrderContactTelephone")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=23)>  _
+        Public Property SaleTypeCode() As Long
+            Get
+                Return Me.SaleTypeCodeField
+            End Get
+            Set
+                If (Me.SaleTypeCodeField.Equals(value) <> true) Then
+                    Me.SaleTypeCodeField = value
+                    Me.RaisePropertyChanged("SaleTypeCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=24)>  _
+        Public Property StartTimeNum() As Long
+            Get
+                Return Me.StartTimeNumField
+            End Get
+            Set
+                If (Me.StartTimeNumField.Equals(value) <> true) Then
+                    Me.StartTimeNumField = value
+                    Me.RaisePropertyChanged("StartTimeNum")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=25)>  _
+        Public Property ReportedByPartner() As Long
+            Get
+                Return Me.ReportedByPartnerField
+            End Get
+            Set
+                If (Me.ReportedByPartnerField.Equals(value) <> true) Then
+                    Me.ReportedByPartnerField = value
+                    Me.RaisePropertyChanged("ReportedByPartner")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=26)>  _
+        Public Property PartnerDateNum() As Long
+            Get
+                Return Me.PartnerDateNumField
+            End Get
+            Set
+                If (Me.PartnerDateNumField.Equals(value) <> true) Then
+                    Me.PartnerDateNumField = value
+                    Me.RaisePropertyChanged("PartnerDateNum")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=27)>  _
+        Public Property PartnerTimeNum() As Long
+            Get
+                Return Me.PartnerTimeNumField
+            End Get
+            Set
+                If (Me.PartnerTimeNumField.Equals(value) <> true) Then
+                    Me.PartnerTimeNumField = value
+                    Me.RaisePropertyChanged("PartnerTimeNum")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=28)>  _
+        Public Property PartnerEngineerOnSite() As Long
+            Get
+                Return Me.PartnerEngineerOnSiteField
+            End Get
+            Set
+                If (Me.PartnerEngineerOnSiteField.Equals(value) <> true) Then
+                    Me.PartnerEngineerOnSiteField = value
+                    Me.RaisePropertyChanged("PartnerEngineerOnSite")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=29)>  _
+        Public Property PartnerEngineerName() As String
+            Get
+                Return Me.PartnerEngineerNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.PartnerEngineerNameField, value) <> true) Then
+                    Me.PartnerEngineerNameField = value
+                    Me.RaisePropertyChanged("PartnerEngineerName")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=30)>  _
+        Public Property PartnerEngineerTelephone() As String
+            Get
+                Return Me.PartnerEngineerTelephoneField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.PartnerEngineerTelephoneField, value) <> true) Then
+                    Me.PartnerEngineerTelephoneField = value
+                    Me.RaisePropertyChanged("PartnerEngineerTelephone")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=31)>  _
+        Public Property PartnerText1() As String
+            Get
+                Return Me.PartnerText1Field
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.PartnerText1Field, value) <> true) Then
+                    Me.PartnerText1Field = value
+                    Me.RaisePropertyChanged("PartnerText1")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=32)>  _
+        Public Property PartnerText2() As String
+            Get
+                Return Me.PartnerText2Field
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.PartnerText2Field, value) <> true) Then
+                    Me.PartnerText2Field = value
+                    Me.RaisePropertyChanged("PartnerText2")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=33)>  _
+        Public Property LeadEngineerCode() As Long
+            Get
+                Return Me.LeadEngineerCodeField
+            End Get
+            Set
+                If (Me.LeadEngineerCodeField.Equals(value) <> true) Then
+                    Me.LeadEngineerCodeField = value
+                    Me.RaisePropertyChanged("LeadEngineerCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=34)>  _
+        Public Property CostCentreCode() As Long
+            Get
+                Return Me.CostCentreCodeField
+            End Get
+            Set
+                If (Me.CostCentreCodeField.Equals(value) <> true) Then
+                    Me.CostCentreCodeField = value
+                    Me.RaisePropertyChanged("CostCentreCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=35)>  _
+        Public Property MarketingSourceCode() As Long
+            Get
+                Return Me.MarketingSourceCodeField
+            End Get
+            Set
+                If (Me.MarketingSourceCodeField.Equals(value) <> true) Then
+                    Me.MarketingSourceCodeField = value
+                    Me.RaisePropertyChanged("MarketingSourceCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=36)>  _
+        Public Property PreviousRepairJobCode() As Long
+            Get
+                Return Me.PreviousRepairJobCodeField
+            End Get
+            Set
+                If (Me.PreviousRepairJobCodeField.Equals(value) <> true) Then
+                    Me.PreviousRepairJobCodeField = value
+                    Me.RaisePropertyChanged("PreviousRepairJobCode")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=37)>  _
+        Public Property ConditionNotes() As String
+            Get
+                Return Me.ConditionNotesField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ConditionNotesField, value) <> true) Then
+                    Me.ConditionNotesField = value
+                    Me.RaisePropertyChanged("ConditionNotes")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=38)>  _
+        Public Property AccessoriesNotes() As String
+            Get
+                Return Me.AccessoriesNotesField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.AccessoriesNotesField, value) <> true) Then
+                    Me.AccessoriesNotesField = value
+                    Me.RaisePropertyChanged("AccessoriesNotes")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=39)>  _
+        Public Property LinkedCustomerApplicationCode() As Long
+            Get
+                Return Me.LinkedCustomerApplicationCodeField
+            End Get
+            Set
+                If (Me.LinkedCustomerApplicationCodeField.Equals(value) <> true) Then
+                    Me.LinkedCustomerApplicationCodeField = value
+                    Me.RaisePropertyChanged("LinkedCustomerApplicationCode")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="GetCustomerAgreementApplicationsRequest", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class GetCustomerAgreementApplicationsRequest
         Inherits Object
         Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
         
@@ -7380,19 +9431,6 @@ Namespace NCWebAPI
         Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
         
         Private CustomerCodeField As Long
-        
-        Private NewCustomerCodeField As Long
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private OpeningCommentField As String
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private ItemsAppliedForField() As NCWebAPI.RentalAgreementLine
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private PaymentDetailsField As NCWebAPI.ApplicationPaymentDetails
-        
-        Private StatusCodeField As Long
         
         Private ApplicationCodeField As Long
         
@@ -7419,72 +9457,7 @@ Namespace NCWebAPI
             End Set
         End Property
         
-        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true)>  _
-        Public Property NewCustomerCode() As Long
-            Get
-                Return Me.NewCustomerCodeField
-            End Get
-            Set
-                If (Me.NewCustomerCodeField.Equals(value) <> true) Then
-                    Me.NewCustomerCodeField = value
-                    Me.RaisePropertyChanged("NewCustomerCode")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false)>  _
-        Public Property OpeningComment() As String
-            Get
-                Return Me.OpeningCommentField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.OpeningCommentField, value) <> true) Then
-                    Me.OpeningCommentField = value
-                    Me.RaisePropertyChanged("OpeningComment")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=3)>  _
-        Public Property ItemsAppliedFor() As NCWebAPI.RentalAgreementLine()
-            Get
-                Return Me.ItemsAppliedForField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.ItemsAppliedForField, value) <> true) Then
-                    Me.ItemsAppliedForField = value
-                    Me.RaisePropertyChanged("ItemsAppliedFor")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=4)>  _
-        Public Property PaymentDetails() As NCWebAPI.ApplicationPaymentDetails
-            Get
-                Return Me.PaymentDetailsField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.PaymentDetailsField, value) <> true) Then
-                    Me.PaymentDetailsField = value
-                    Me.RaisePropertyChanged("PaymentDetails")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=5)>  _
-        Public Property StatusCode() As Long
-            Get
-                Return Me.StatusCodeField
-            End Get
-            Set
-                If (Me.StatusCodeField.Equals(value) <> true) Then
-                    Me.StatusCodeField = value
-                    Me.RaisePropertyChanged("StatusCode")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=6)>  _
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true, Order:=1)>  _
         Public Property ApplicationCode() As Long
             Get
                 Return Me.ApplicationCodeField
@@ -7494,37 +9467,6 @@ Namespace NCWebAPI
                     Me.ApplicationCodeField = value
                     Me.RaisePropertyChanged("ApplicationCode")
                 End If
-            End Set
-        End Property
-        
-        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
-        
-        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
-            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
-            If (Not (propertyChanged) Is Nothing) Then
-                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
-            End If
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
-     System.Runtime.Serialization.DataContractAttribute(Name:="ApplicationPaymentDetails", [Namespace]:="http://www.findesolutions.com/webservices/"),  _
-     System.SerializableAttribute()>  _
-    Partial Public Class ApplicationPaymentDetails
-        Inherits Object
-        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
-        
-        <System.NonSerializedAttribute()>  _
-        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
-        
-        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
-        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
-            Get
-                Return Me.extensionDataField
-            End Get
-            Set
-                Me.extensionDataField = value
             End Set
         End Property
         
@@ -7620,6 +9562,13 @@ Namespace NCWebAPI
         Function ValidateLoginAsync(ByVal request As NCWebAPI.ValidateLoginRequest) As System.Threading.Tasks.Task(Of NCWebAPI.ValidateLoginResponse)
         
         'CODEGEN: Generating message contract since element name SystemID from namespace http://www.findesolutions.com/webservices/ is not marked nillable
+        <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/GetCustomerDetails", ReplyAction:="*")>  _
+        Function GetCustomerDetails(ByVal request As NCWebAPI.GetCustomerDetailsRequest) As NCWebAPI.GetCustomerDetailsResponse
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/GetCustomerDetails", ReplyAction:="*")>  _
+        Function GetCustomerDetailsAsync(ByVal request As NCWebAPI.GetCustomerDetailsRequest) As System.Threading.Tasks.Task(Of NCWebAPI.GetCustomerDetailsResponse)
+        
+        'CODEGEN: Generating message contract since element name SystemID from namespace http://www.findesolutions.com/webservices/ is not marked nillable
         <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/Get_WebDomainDetails", ReplyAction:="*")>  _
         Function Get_WebDomainDetails(ByVal request As NCWebAPI.Get_WebDomainDetailsRequest) As NCWebAPI.Get_WebDomainDetailsResponse
         
@@ -7688,6 +9637,31 @@ Namespace NCWebAPI
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/OrderDelivery_SetToSchedule", ReplyAction:="*")>  _
         Function OrderDelivery_SetToScheduleAsync(ByVal request As NCWebAPI.OrderDelivery_SetToScheduleRequest) As System.Threading.Tasks.Task(Of NCWebAPI.OrderDelivery_SetToScheduleResponse)
+        
+        'CODEGEN: Generating message contract since element name SystemID from namespace http://www.findesolutions.com/webservices/ is not marked nillable
+        <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/CustomerApplication_ScheduleDelivery_Ag"& _ 
+            "reements", ReplyAction:="*")>  _
+        Function CustomerApplication_ScheduleDelivery_Agreements(ByVal request As NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsRequest) As NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsResponse
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/CustomerApplication_ScheduleDelivery_Ag"& _ 
+            "reements", ReplyAction:="*")>  _
+        Function CustomerApplication_ScheduleDelivery_AgreementsAsync(ByVal request As NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsRequest) As System.Threading.Tasks.Task(Of NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsResponse)
+        
+        'CODEGEN: Generating message contract since element name SystemID from namespace http://www.findesolutions.com/webservices/ is not marked nillable
+        <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/CustomerApplication_ScheduleDelivery_Or"& _ 
+            "ders", ReplyAction:="*")>  _
+        Function CustomerApplication_ScheduleDelivery_Orders(ByVal request As NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersRequest) As NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersResponse
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/CustomerApplication_ScheduleDelivery_Or"& _ 
+            "ders", ReplyAction:="*")>  _
+        Function CustomerApplication_ScheduleDelivery_OrdersAsync(ByVal request As NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersRequest) As System.Threading.Tasks.Task(Of NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersResponse)
+        
+        'CODEGEN: Generating message contract since element name SystemID from namespace http://www.findesolutions.com/webservices/ is not marked nillable
+        <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/ServiceJob_ScheduleDelivery", ReplyAction:="*")>  _
+        Function ServiceJob_ScheduleDelivery(ByVal request As NCWebAPI.ServiceJob_ScheduleDeliveryRequest) As NCWebAPI.ServiceJob_ScheduleDeliveryResponse
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/ServiceJob_ScheduleDelivery", ReplyAction:="*")>  _
+        Function ServiceJob_ScheduleDeliveryAsync(ByVal request As NCWebAPI.ServiceJob_ScheduleDeliveryRequest) As System.Threading.Tasks.Task(Of NCWebAPI.ServiceJob_ScheduleDeliveryResponse)
         
         'CODEGEN: Generating message contract since element name SystemID from namespace http://www.findesolutions.com/webservices/ is not marked nillable
         <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/AddToOrder_WithWarranty", ReplyAction:="*")>  _
@@ -7895,6 +9869,13 @@ Namespace NCWebAPI
         Function GetChangeList2Async(ByVal request As NCWebAPI.GetChangeList2Request) As System.Threading.Tasks.Task(Of NCWebAPI.GetChangeList2Response)
         
         'CODEGEN: Generating message contract since element name SystemID from namespace http://www.findesolutions.com/webservices/ is not marked nillable
+        <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/Get_FieldCalls_AvailabilityList", ReplyAction:="*")>  _
+        Function Get_FieldCalls_AvailabilityList(ByVal request As NCWebAPI.Get_FieldCalls_AvailabilityListRequest) As NCWebAPI.Get_FieldCalls_AvailabilityListResponse
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/Get_FieldCalls_AvailabilityList", ReplyAction:="*")>  _
+        Function Get_FieldCalls_AvailabilityListAsync(ByVal request As NCWebAPI.Get_FieldCalls_AvailabilityListRequest) As System.Threading.Tasks.Task(Of NCWebAPI.Get_FieldCalls_AvailabilityListResponse)
+        
+        'CODEGEN: Generating message contract since element name SystemID from namespace http://www.findesolutions.com/webservices/ is not marked nillable
         <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/ClearChangeList", ReplyAction:="*")>  _
         Function ClearChangeList(ByVal request As NCWebAPI.ClearChangeListRequest) As NCWebAPI.ClearChangeListResponse
         
@@ -7935,6 +9916,27 @@ Namespace NCWebAPI
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/CreateNewCustomerApplication", ReplyAction:="*")>  _
         Function CreateNewCustomerApplicationAsync(ByVal request As NCWebAPI.CreateNewCustomerApplicationRequest) As System.Threading.Tasks.Task(Of NCWebAPI.CreateNewCustomerApplicationResponse)
+        
+        'CODEGEN: Generating message contract since element name SystemID from namespace http://www.findesolutions.com/webservices/ is not marked nillable
+        <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/CreateServiceJob", ReplyAction:="*")>  _
+        Function CreateServiceJob(ByVal request As NCWebAPI.CreateServiceJobRequest) As NCWebAPI.CreateServiceJobResponse
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/CreateServiceJob", ReplyAction:="*")>  _
+        Function CreateServiceJobAsync(ByVal request As NCWebAPI.CreateServiceJobRequest) As System.Threading.Tasks.Task(Of NCWebAPI.CreateServiceJobResponse)
+        
+        'CODEGEN: Generating message contract since element name SystemID from namespace http://www.findesolutions.com/webservices/ is not marked nillable
+        <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/GetCustomerAgreementApplications", ReplyAction:="*")>  _
+        Function GetCustomerAgreementApplications(ByVal request As NCWebAPI.GetCustomerAgreementApplicationsRequest1) As NCWebAPI.GetCustomerAgreementApplicationsResponse
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/GetCustomerAgreementApplications", ReplyAction:="*")>  _
+        Function GetCustomerAgreementApplicationsAsync(ByVal request As NCWebAPI.GetCustomerAgreementApplicationsRequest1) As System.Threading.Tasks.Task(Of NCWebAPI.GetCustomerAgreementApplicationsResponse)
+        
+        'CODEGEN: Generating message contract since element name SystemID from namespace http://www.findesolutions.com/webservices/ is not marked nillable
+        <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/GetCustomerAgreements", ReplyAction:="*")>  _
+        Function GetCustomerAgreements(ByVal request As NCWebAPI.GetCustomerAgreementsRequest) As NCWebAPI.GetCustomerAgreementsResponse
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://www.findesolutions.com/webservices/GetCustomerAgreements", ReplyAction:="*")>  _
+        Function GetCustomerAgreementsAsync(ByVal request As NCWebAPI.GetCustomerAgreementsRequest) As System.Threading.Tasks.Task(Of NCWebAPI.GetCustomerAgreementsResponse)
     End Interface
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
@@ -8999,6 +11001,98 @@ Namespace NCWebAPI
         Public Sub New(ByVal ValidateLoginResult As NCWebAPI.ValidateLoginReply)
             MyBase.New
             Me.ValidateLoginResult = ValidateLoginResult
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.ServiceModel.MessageContractAttribute(IsWrapped:=false)>  _
+    Partial Public Class GetCustomerDetailsRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute(Name:="GetCustomerDetails", [Namespace]:="http://www.findesolutions.com/webservices/", Order:=0)>  _
+        Public Body As NCWebAPI.GetCustomerDetailsRequestBody
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal Body As NCWebAPI.GetCustomerDetailsRequestBody)
+            MyBase.New
+            Me.Body = Body
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.Runtime.Serialization.DataContractAttribute([Namespace]:="http://www.findesolutions.com/webservices/")>  _
+    Partial Public Class GetCustomerDetailsRequestBody
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=0)>  _
+        Public SystemID As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=1)>  _
+        Public SystemCode As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=2)>  _
+        Public Username As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=3)>  _
+        Public Password As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=4)>  _
+        Public CustomerCode As Long
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal CustomerCode As Long)
+            MyBase.New
+            Me.SystemID = SystemID
+            Me.SystemCode = SystemCode
+            Me.Username = Username
+            Me.Password = Password
+            Me.CustomerCode = CustomerCode
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.ServiceModel.MessageContractAttribute(IsWrapped:=false)>  _
+    Partial Public Class GetCustomerDetailsResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute(Name:="GetCustomerDetailsResponse", [Namespace]:="http://www.findesolutions.com/webservices/", Order:=0)>  _
+        Public Body As NCWebAPI.GetCustomerDetailsResponseBody
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal Body As NCWebAPI.GetCustomerDetailsResponseBody)
+            MyBase.New
+            Me.Body = Body
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.Runtime.Serialization.DataContractAttribute([Namespace]:="http://www.findesolutions.com/webservices/")>  _
+    Partial Public Class GetCustomerDetailsResponseBody
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=0)>  _
+        Public GetCustomerDetailsResult As NCWebAPI.GetCustomerDetailsReply
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal GetCustomerDetailsResult As NCWebAPI.GetCustomerDetailsReply)
+            MyBase.New
+            Me.GetCustomerDetailsResult = GetCustomerDetailsResult
         End Sub
     End Class
     
@@ -10157,6 +12251,398 @@ Namespace NCWebAPI
         Public Sub New(ByVal OrderDelivery_SetToScheduleResult As NCWebAPI.AddToOrder_SetDeliveryDetailsReply)
             MyBase.New
             Me.OrderDelivery_SetToScheduleResult = OrderDelivery_SetToScheduleResult
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.ServiceModel.MessageContractAttribute(IsWrapped:=false)>  _
+    Partial Public Class CustomerApplication_ScheduleDelivery_AgreementsRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute(Name:="CustomerApplication_ScheduleDelivery_Agreements", [Namespace]:="http://www.findesolutions.com/webservices/", Order:=0)>  _
+        Public Body As NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsRequestBody
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal Body As NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsRequestBody)
+            MyBase.New
+            Me.Body = Body
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.Runtime.Serialization.DataContractAttribute([Namespace]:="http://www.findesolutions.com/webservices/")>  _
+    Partial Public Class CustomerApplication_ScheduleDelivery_AgreementsRequestBody
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=0)>  _
+        Public SystemID As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=1)>  _
+        Public SystemCode As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=2)>  _
+        Public Username As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=3)>  _
+        Public Password As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=4)>  _
+        Public CustomerCode As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=5)>  _
+        Public ApplicationCode As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=6)>  _
+        Public BookForEngineerCode As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=7)>  _
+        Public AutoSearchEngineerGroupCode As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=8)>  _
+        Public DeliveryDateNum As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=9)>  _
+        Public ScheduleTimeTypeCode As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=10)>  _
+        Public ScheduleTimeFromNum As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=11)>  _
+        Public ScheduleDateToNum As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=12)>  _
+        Public ScheduleTimeToNum As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=13)>  _
+        Public ScheduleRingFirst As Boolean
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=14)>  _
+        Public Notes As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal CustomerCode As Long, ByVal ApplicationCode As Long, ByVal BookForEngineerCode As Long, ByVal AutoSearchEngineerGroupCode As Long, ByVal DeliveryDateNum As Long, ByVal ScheduleTimeTypeCode As Long, ByVal ScheduleTimeFromNum As Long, ByVal ScheduleDateToNum As Long, ByVal ScheduleTimeToNum As Long, ByVal ScheduleRingFirst As Boolean, ByVal Notes As String)
+            MyBase.New
+            Me.SystemID = SystemID
+            Me.SystemCode = SystemCode
+            Me.Username = Username
+            Me.Password = Password
+            Me.CustomerCode = CustomerCode
+            Me.ApplicationCode = ApplicationCode
+            Me.BookForEngineerCode = BookForEngineerCode
+            Me.AutoSearchEngineerGroupCode = AutoSearchEngineerGroupCode
+            Me.DeliveryDateNum = DeliveryDateNum
+            Me.ScheduleTimeTypeCode = ScheduleTimeTypeCode
+            Me.ScheduleTimeFromNum = ScheduleTimeFromNum
+            Me.ScheduleDateToNum = ScheduleDateToNum
+            Me.ScheduleTimeToNum = ScheduleTimeToNum
+            Me.ScheduleRingFirst = ScheduleRingFirst
+            Me.Notes = Notes
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.ServiceModel.MessageContractAttribute(IsWrapped:=false)>  _
+    Partial Public Class CustomerApplication_ScheduleDelivery_AgreementsResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute(Name:="CustomerApplication_ScheduleDelivery_AgreementsResponse", [Namespace]:="http://www.findesolutions.com/webservices/", Order:=0)>  _
+        Public Body As NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsResponseBody
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal Body As NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsResponseBody)
+            MyBase.New
+            Me.Body = Body
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.Runtime.Serialization.DataContractAttribute([Namespace]:="http://www.findesolutions.com/webservices/")>  _
+    Partial Public Class CustomerApplication_ScheduleDelivery_AgreementsResponseBody
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=0)>  _
+        Public CustomerApplication_ScheduleDelivery_AgreementsResult As NCWebAPI.RentalAgreement_ScheduleDelivery_Reply
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal CustomerApplication_ScheduleDelivery_AgreementsResult As NCWebAPI.RentalAgreement_ScheduleDelivery_Reply)
+            MyBase.New
+            Me.CustomerApplication_ScheduleDelivery_AgreementsResult = CustomerApplication_ScheduleDelivery_AgreementsResult
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.ServiceModel.MessageContractAttribute(IsWrapped:=false)>  _
+    Partial Public Class CustomerApplication_ScheduleDelivery_OrdersRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute(Name:="CustomerApplication_ScheduleDelivery_Orders", [Namespace]:="http://www.findesolutions.com/webservices/", Order:=0)>  _
+        Public Body As NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersRequestBody
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal Body As NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersRequestBody)
+            MyBase.New
+            Me.Body = Body
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.Runtime.Serialization.DataContractAttribute([Namespace]:="http://www.findesolutions.com/webservices/")>  _
+    Partial Public Class CustomerApplication_ScheduleDelivery_OrdersRequestBody
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=0)>  _
+        Public SystemID As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=1)>  _
+        Public SystemCode As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=2)>  _
+        Public Username As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=3)>  _
+        Public Password As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=4)>  _
+        Public CustomerCode As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=5)>  _
+        Public ApplicationCode As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=6)>  _
+        Public BookForEngineerCode As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=7)>  _
+        Public AutoSearchEngineerGroupCode As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=8)>  _
+        Public DeliveryDateNum As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=9)>  _
+        Public ScheduleTimeTypeCode As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=10)>  _
+        Public ScheduleTimeFromNum As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=11)>  _
+        Public ScheduleDateToNum As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=12)>  _
+        Public ScheduleTimeToNum As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=13)>  _
+        Public ScheduleRingFirst As Boolean
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=14)>  _
+        Public Notes As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal CustomerCode As Long, ByVal ApplicationCode As Long, ByVal BookForEngineerCode As Long, ByVal AutoSearchEngineerGroupCode As Long, ByVal DeliveryDateNum As Long, ByVal ScheduleTimeTypeCode As Long, ByVal ScheduleTimeFromNum As Long, ByVal ScheduleDateToNum As Long, ByVal ScheduleTimeToNum As Long, ByVal ScheduleRingFirst As Boolean, ByVal Notes As String)
+            MyBase.New
+            Me.SystemID = SystemID
+            Me.SystemCode = SystemCode
+            Me.Username = Username
+            Me.Password = Password
+            Me.CustomerCode = CustomerCode
+            Me.ApplicationCode = ApplicationCode
+            Me.BookForEngineerCode = BookForEngineerCode
+            Me.AutoSearchEngineerGroupCode = AutoSearchEngineerGroupCode
+            Me.DeliveryDateNum = DeliveryDateNum
+            Me.ScheduleTimeTypeCode = ScheduleTimeTypeCode
+            Me.ScheduleTimeFromNum = ScheduleTimeFromNum
+            Me.ScheduleDateToNum = ScheduleDateToNum
+            Me.ScheduleTimeToNum = ScheduleTimeToNum
+            Me.ScheduleRingFirst = ScheduleRingFirst
+            Me.Notes = Notes
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.ServiceModel.MessageContractAttribute(IsWrapped:=false)>  _
+    Partial Public Class CustomerApplication_ScheduleDelivery_OrdersResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute(Name:="CustomerApplication_ScheduleDelivery_OrdersResponse", [Namespace]:="http://www.findesolutions.com/webservices/", Order:=0)>  _
+        Public Body As NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersResponseBody
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal Body As NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersResponseBody)
+            MyBase.New
+            Me.Body = Body
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.Runtime.Serialization.DataContractAttribute([Namespace]:="http://www.findesolutions.com/webservices/")>  _
+    Partial Public Class CustomerApplication_ScheduleDelivery_OrdersResponseBody
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=0)>  _
+        Public CustomerApplication_ScheduleDelivery_OrdersResult As NCWebAPI.AddToOrder_SetDeliveryDetailsReply
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal CustomerApplication_ScheduleDelivery_OrdersResult As NCWebAPI.AddToOrder_SetDeliveryDetailsReply)
+            MyBase.New
+            Me.CustomerApplication_ScheduleDelivery_OrdersResult = CustomerApplication_ScheduleDelivery_OrdersResult
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.ServiceModel.MessageContractAttribute(IsWrapped:=false)>  _
+    Partial Public Class ServiceJob_ScheduleDeliveryRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute(Name:="ServiceJob_ScheduleDelivery", [Namespace]:="http://www.findesolutions.com/webservices/", Order:=0)>  _
+        Public Body As NCWebAPI.ServiceJob_ScheduleDeliveryRequestBody
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal Body As NCWebAPI.ServiceJob_ScheduleDeliveryRequestBody)
+            MyBase.New
+            Me.Body = Body
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.Runtime.Serialization.DataContractAttribute([Namespace]:="http://www.findesolutions.com/webservices/")>  _
+    Partial Public Class ServiceJob_ScheduleDeliveryRequestBody
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=0)>  _
+        Public SystemID As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=1)>  _
+        Public SystemCode As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=2)>  _
+        Public Username As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=3)>  _
+        Public Password As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=4)>  _
+        Public ServiceJobCode As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=5)>  _
+        Public BookForEngineerCode As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=6)>  _
+        Public AutoSearchEngineerGroupCode As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=7)>  _
+        Public DeliveryDateNum As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=8)>  _
+        Public ScheduleTimeTypeCode As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=9)>  _
+        Public ScheduleTimeFromNum As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=10)>  _
+        Public ScheduleDateToNum As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=11)>  _
+        Public ScheduleTimeToNum As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=12)>  _
+        Public ScheduleRingFirst As Boolean
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=13)>  _
+        Public Notes As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal ServiceJobCode As Long, ByVal BookForEngineerCode As Long, ByVal AutoSearchEngineerGroupCode As Long, ByVal DeliveryDateNum As Long, ByVal ScheduleTimeTypeCode As Long, ByVal ScheduleTimeFromNum As Long, ByVal ScheduleDateToNum As Long, ByVal ScheduleTimeToNum As Long, ByVal ScheduleRingFirst As Boolean, ByVal Notes As String)
+            MyBase.New
+            Me.SystemID = SystemID
+            Me.SystemCode = SystemCode
+            Me.Username = Username
+            Me.Password = Password
+            Me.ServiceJobCode = ServiceJobCode
+            Me.BookForEngineerCode = BookForEngineerCode
+            Me.AutoSearchEngineerGroupCode = AutoSearchEngineerGroupCode
+            Me.DeliveryDateNum = DeliveryDateNum
+            Me.ScheduleTimeTypeCode = ScheduleTimeTypeCode
+            Me.ScheduleTimeFromNum = ScheduleTimeFromNum
+            Me.ScheduleDateToNum = ScheduleDateToNum
+            Me.ScheduleTimeToNum = ScheduleTimeToNum
+            Me.ScheduleRingFirst = ScheduleRingFirst
+            Me.Notes = Notes
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.ServiceModel.MessageContractAttribute(IsWrapped:=false)>  _
+    Partial Public Class ServiceJob_ScheduleDeliveryResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute(Name:="ServiceJob_ScheduleDeliveryResponse", [Namespace]:="http://www.findesolutions.com/webservices/", Order:=0)>  _
+        Public Body As NCWebAPI.ServiceJob_ScheduleDeliveryResponseBody
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal Body As NCWebAPI.ServiceJob_ScheduleDeliveryResponseBody)
+            MyBase.New
+            Me.Body = Body
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.Runtime.Serialization.DataContractAttribute([Namespace]:="http://www.findesolutions.com/webservices/")>  _
+    Partial Public Class ServiceJob_ScheduleDeliveryResponseBody
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=0)>  _
+        Public ServiceJob_ScheduleDeliveryResult As NCWebAPI.ServiceJob_ScheduleDelivery_Reply
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal ServiceJob_ScheduleDeliveryResult As NCWebAPI.ServiceJob_ScheduleDelivery_Reply)
+            MyBase.New
+            Me.ServiceJob_ScheduleDeliveryResult = ServiceJob_ScheduleDeliveryResult
         End Sub
     End Class
     
@@ -12944,6 +15430,130 @@ Namespace NCWebAPI
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
      System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
      System.ServiceModel.MessageContractAttribute(IsWrapped:=false)>  _
+    Partial Public Class Get_FieldCalls_AvailabilityListRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute(Name:="Get_FieldCalls_AvailabilityList", [Namespace]:="http://www.findesolutions.com/webservices/", Order:=0)>  _
+        Public Body As NCWebAPI.Get_FieldCalls_AvailabilityListRequestBody
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal Body As NCWebAPI.Get_FieldCalls_AvailabilityListRequestBody)
+            MyBase.New
+            Me.Body = Body
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.Runtime.Serialization.DataContractAttribute([Namespace]:="http://www.findesolutions.com/webservices/")>  _
+    Partial Public Class Get_FieldCalls_AvailabilityListRequestBody
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=0)>  _
+        Public SystemID As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=1)>  _
+        Public SystemCode As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=2)>  _
+        Public Username As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=3)>  _
+        Public Password As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=4)>  _
+        Public Postcode As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=5)>  _
+        Public StartDateNum As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=6)>  _
+        Public NumberOfDaysAhead As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=7)>  _
+        Public PointsRequired As Decimal
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=8)>  _
+        Public NumberOfDaysToFind As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=9)>  _
+        Public ContainsDelivery As Boolean
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=10)>  _
+        Public ContainsService As Boolean
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=11)>  _
+        Public LimitToEngineerGroupCode As Long
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=12)>  _
+        Public RequireCarrierClassCode As Long
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal Postcode As String, ByVal StartDateNum As Long, ByVal NumberOfDaysAhead As Long, ByVal PointsRequired As Decimal, ByVal NumberOfDaysToFind As Long, ByVal ContainsDelivery As Boolean, ByVal ContainsService As Boolean, ByVal LimitToEngineerGroupCode As Long, ByVal RequireCarrierClassCode As Long)
+            MyBase.New
+            Me.SystemID = SystemID
+            Me.SystemCode = SystemCode
+            Me.Username = Username
+            Me.Password = Password
+            Me.Postcode = Postcode
+            Me.StartDateNum = StartDateNum
+            Me.NumberOfDaysAhead = NumberOfDaysAhead
+            Me.PointsRequired = PointsRequired
+            Me.NumberOfDaysToFind = NumberOfDaysToFind
+            Me.ContainsDelivery = ContainsDelivery
+            Me.ContainsService = ContainsService
+            Me.LimitToEngineerGroupCode = LimitToEngineerGroupCode
+            Me.RequireCarrierClassCode = RequireCarrierClassCode
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.ServiceModel.MessageContractAttribute(IsWrapped:=false)>  _
+    Partial Public Class Get_FieldCalls_AvailabilityListResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute(Name:="Get_FieldCalls_AvailabilityListResponse", [Namespace]:="http://www.findesolutions.com/webservices/", Order:=0)>  _
+        Public Body As NCWebAPI.Get_FieldCalls_AvailabilityListResponseBody
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal Body As NCWebAPI.Get_FieldCalls_AvailabilityListResponseBody)
+            MyBase.New
+            Me.Body = Body
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.Runtime.Serialization.DataContractAttribute([Namespace]:="http://www.findesolutions.com/webservices/")>  _
+    Partial Public Class Get_FieldCalls_AvailabilityListResponseBody
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=0)>  _
+        Public Get_FieldCalls_AvailabilityListResult As NCWebAPI.Get_FieldCalls_AvailabilityList_Reply
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal Get_FieldCalls_AvailabilityListResult As NCWebAPI.Get_FieldCalls_AvailabilityList_Reply)
+            MyBase.New
+            Me.Get_FieldCalls_AvailabilityListResult = Get_FieldCalls_AvailabilityListResult
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.ServiceModel.MessageContractAttribute(IsWrapped:=false)>  _
     Partial Public Class ClearChangeListRequest
         
         <System.ServiceModel.MessageBodyMemberAttribute(Name:="ClearChangeList", [Namespace]:="http://www.findesolutions.com/webservices/", Order:=0)>  _
@@ -13484,6 +16094,282 @@ Namespace NCWebAPI
         End Sub
     End Class
     
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.ServiceModel.MessageContractAttribute(IsWrapped:=false)>  _
+    Partial Public Class CreateServiceJobRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute(Name:="CreateServiceJob", [Namespace]:="http://www.findesolutions.com/webservices/", Order:=0)>  _
+        Public Body As NCWebAPI.CreateServiceJobRequestBody
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal Body As NCWebAPI.CreateServiceJobRequestBody)
+            MyBase.New
+            Me.Body = Body
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.Runtime.Serialization.DataContractAttribute([Namespace]:="http://www.findesolutions.com/webservices/")>  _
+    Partial Public Class CreateServiceJobRequestBody
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=0)>  _
+        Public SystemID As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=1)>  _
+        Public SystemCode As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=2)>  _
+        Public Username As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=3)>  _
+        Public Password As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=4)>  _
+        Public objRequest As NCWebAPI.CreateServiceJobRequestDetails
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal objRequest As NCWebAPI.CreateServiceJobRequestDetails)
+            MyBase.New
+            Me.SystemID = SystemID
+            Me.SystemCode = SystemCode
+            Me.Username = Username
+            Me.Password = Password
+            Me.objRequest = objRequest
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.ServiceModel.MessageContractAttribute(IsWrapped:=false)>  _
+    Partial Public Class CreateServiceJobResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute(Name:="CreateServiceJobResponse", [Namespace]:="http://www.findesolutions.com/webservices/", Order:=0)>  _
+        Public Body As NCWebAPI.CreateServiceJobResponseBody
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal Body As NCWebAPI.CreateServiceJobResponseBody)
+            MyBase.New
+            Me.Body = Body
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.Runtime.Serialization.DataContractAttribute([Namespace]:="http://www.findesolutions.com/webservices/")>  _
+    Partial Public Class CreateServiceJobResponseBody
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=0)>  _
+        Public CreateServiceJobResult As NCWebAPI.CreateServiceJobReply
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal CreateServiceJobResult As NCWebAPI.CreateServiceJobReply)
+            MyBase.New
+            Me.CreateServiceJobResult = CreateServiceJobResult
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.ServiceModel.MessageContractAttribute(IsWrapped:=false)>  _
+    Partial Public Class GetCustomerAgreementApplicationsRequest1
+        
+        <System.ServiceModel.MessageBodyMemberAttribute(Name:="GetCustomerAgreementApplications", [Namespace]:="http://www.findesolutions.com/webservices/", Order:=0)>  _
+        Public Body As NCWebAPI.GetCustomerAgreementApplicationsRequest1Body
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal Body As NCWebAPI.GetCustomerAgreementApplicationsRequest1Body)
+            MyBase.New
+            Me.Body = Body
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.Runtime.Serialization.DataContractAttribute([Namespace]:="http://www.findesolutions.com/webservices/")>  _
+    Partial Public Class GetCustomerAgreementApplicationsRequest1Body
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=0)>  _
+        Public SystemID As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=1)>  _
+        Public SystemCode As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=2)>  _
+        Public Username As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=3)>  _
+        Public Password As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=4)>  _
+        Public objRequest As NCWebAPI.GetCustomerAgreementApplicationsRequest
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal objRequest As NCWebAPI.GetCustomerAgreementApplicationsRequest)
+            MyBase.New
+            Me.SystemID = SystemID
+            Me.SystemCode = SystemCode
+            Me.Username = Username
+            Me.Password = Password
+            Me.objRequest = objRequest
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.ServiceModel.MessageContractAttribute(IsWrapped:=false)>  _
+    Partial Public Class GetCustomerAgreementApplicationsResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute(Name:="GetCustomerAgreementApplicationsResponse", [Namespace]:="http://www.findesolutions.com/webservices/", Order:=0)>  _
+        Public Body As NCWebAPI.GetCustomerAgreementApplicationsResponseBody
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal Body As NCWebAPI.GetCustomerAgreementApplicationsResponseBody)
+            MyBase.New
+            Me.Body = Body
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.Runtime.Serialization.DataContractAttribute([Namespace]:="http://www.findesolutions.com/webservices/")>  _
+    Partial Public Class GetCustomerAgreementApplicationsResponseBody
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=0)>  _
+        Public GetCustomerAgreementApplicationsResult As NCWebAPI.GetCustomerAgreementApplicationsReply
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal GetCustomerAgreementApplicationsResult As NCWebAPI.GetCustomerAgreementApplicationsReply)
+            MyBase.New
+            Me.GetCustomerAgreementApplicationsResult = GetCustomerAgreementApplicationsResult
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.ServiceModel.MessageContractAttribute(IsWrapped:=false)>  _
+    Partial Public Class GetCustomerAgreementsRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute(Name:="GetCustomerAgreements", [Namespace]:="http://www.findesolutions.com/webservices/", Order:=0)>  _
+        Public Body As NCWebAPI.GetCustomerAgreementsRequestBody
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal Body As NCWebAPI.GetCustomerAgreementsRequestBody)
+            MyBase.New
+            Me.Body = Body
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.Runtime.Serialization.DataContractAttribute([Namespace]:="http://www.findesolutions.com/webservices/")>  _
+    Partial Public Class GetCustomerAgreementsRequestBody
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=0)>  _
+        Public SystemID As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=1)>  _
+        Public SystemCode As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=2)>  _
+        Public Username As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=3)>  _
+        Public Password As String
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Order:=4)>  _
+        Public CustomerCode As Long
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal CustomerCode As Long)
+            MyBase.New
+            Me.SystemID = SystemID
+            Me.SystemCode = SystemCode
+            Me.Username = Username
+            Me.Password = Password
+            Me.CustomerCode = CustomerCode
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.ServiceModel.MessageContractAttribute(IsWrapped:=false)>  _
+    Partial Public Class GetCustomerAgreementsResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute(Name:="GetCustomerAgreementsResponse", [Namespace]:="http://www.findesolutions.com/webservices/", Order:=0)>  _
+        Public Body As NCWebAPI.GetCustomerAgreementsResponseBody
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal Body As NCWebAPI.GetCustomerAgreementsResponseBody)
+            MyBase.New
+            Me.Body = Body
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced),  _
+     System.Runtime.Serialization.DataContractAttribute([Namespace]:="http://www.findesolutions.com/webservices/")>  _
+    Partial Public Class GetCustomerAgreementsResponseBody
+        
+        <System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue:=false, Order:=0)>  _
+        Public GetCustomerAgreementsResult As NCWebAPI.GetCustomerAgreementsReply
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal GetCustomerAgreementsResult As NCWebAPI.GetCustomerAgreementsReply)
+            MyBase.New
+            Me.GetCustomerAgreementsResult = GetCustomerAgreementsResult
+        End Sub
+    End Class
+    
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>  _
     Public Interface ProductsAndOrderingSoapChannel
         Inherits NCWebAPI.ProductsAndOrderingSoap, System.ServiceModel.IClientChannel
@@ -13938,6 +16824,39 @@ Namespace NCWebAPI
             inValue.Body.Username = Username
             inValue.Body.Password = Password
             Return CType(Me,NCWebAPI.ProductsAndOrderingSoap).ValidateLoginAsync(inValue)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function NCWebAPI_ProductsAndOrderingSoap_GetCustomerDetails(ByVal request As NCWebAPI.GetCustomerDetailsRequest) As NCWebAPI.GetCustomerDetailsResponse Implements NCWebAPI.ProductsAndOrderingSoap.GetCustomerDetails
+            Return MyBase.Channel.GetCustomerDetails(request)
+        End Function
+        
+        Public Function GetCustomerDetails(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal CustomerCode As Long) As NCWebAPI.GetCustomerDetailsReply
+            Dim inValue As NCWebAPI.GetCustomerDetailsRequest = New NCWebAPI.GetCustomerDetailsRequest()
+            inValue.Body = New NCWebAPI.GetCustomerDetailsRequestBody()
+            inValue.Body.SystemID = SystemID
+            inValue.Body.SystemCode = SystemCode
+            inValue.Body.Username = Username
+            inValue.Body.Password = Password
+            inValue.Body.CustomerCode = CustomerCode
+            Dim retVal As NCWebAPI.GetCustomerDetailsResponse = CType(Me,NCWebAPI.ProductsAndOrderingSoap).GetCustomerDetails(inValue)
+            Return retVal.Body.GetCustomerDetailsResult
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function NCWebAPI_ProductsAndOrderingSoap_GetCustomerDetailsAsync(ByVal request As NCWebAPI.GetCustomerDetailsRequest) As System.Threading.Tasks.Task(Of NCWebAPI.GetCustomerDetailsResponse) Implements NCWebAPI.ProductsAndOrderingSoap.GetCustomerDetailsAsync
+            Return MyBase.Channel.GetCustomerDetailsAsync(request)
+        End Function
+        
+        Public Function GetCustomerDetailsAsync(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal CustomerCode As Long) As System.Threading.Tasks.Task(Of NCWebAPI.GetCustomerDetailsResponse)
+            Dim inValue As NCWebAPI.GetCustomerDetailsRequest = New NCWebAPI.GetCustomerDetailsRequest()
+            inValue.Body = New NCWebAPI.GetCustomerDetailsRequestBody()
+            inValue.Body.SystemID = SystemID
+            inValue.Body.SystemCode = SystemCode
+            inValue.Body.Username = Username
+            inValue.Body.Password = Password
+            inValue.Body.CustomerCode = CustomerCode
+            Return CType(Me,NCWebAPI.ProductsAndOrderingSoap).GetCustomerDetailsAsync(inValue)
         End Function
         
         <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
@@ -14414,6 +17333,163 @@ Namespace NCWebAPI
             inValue.Body.ScheduleRingFirst = ScheduleRingFirst
             inValue.Body.Notes = Notes
             Return CType(Me,NCWebAPI.ProductsAndOrderingSoap).OrderDelivery_SetToScheduleAsync(inValue)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function NCWebAPI_ProductsAndOrderingSoap_CustomerApplication_ScheduleDelivery_Agreements(ByVal request As NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsRequest) As NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsResponse Implements NCWebAPI.ProductsAndOrderingSoap.CustomerApplication_ScheduleDelivery_Agreements
+            Return MyBase.Channel.CustomerApplication_ScheduleDelivery_Agreements(request)
+        End Function
+        
+        Public Function CustomerApplication_ScheduleDelivery_Agreements(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal CustomerCode As Long, ByVal ApplicationCode As Long, ByVal BookForEngineerCode As Long, ByVal AutoSearchEngineerGroupCode As Long, ByVal DeliveryDateNum As Long, ByVal ScheduleTimeTypeCode As Long, ByVal ScheduleTimeFromNum As Long, ByVal ScheduleDateToNum As Long, ByVal ScheduleTimeToNum As Long, ByVal ScheduleRingFirst As Boolean, ByVal Notes As String) As NCWebAPI.RentalAgreement_ScheduleDelivery_Reply
+            Dim inValue As NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsRequest = New NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsRequest()
+            inValue.Body = New NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsRequestBody()
+            inValue.Body.SystemID = SystemID
+            inValue.Body.SystemCode = SystemCode
+            inValue.Body.Username = Username
+            inValue.Body.Password = Password
+            inValue.Body.CustomerCode = CustomerCode
+            inValue.Body.ApplicationCode = ApplicationCode
+            inValue.Body.BookForEngineerCode = BookForEngineerCode
+            inValue.Body.AutoSearchEngineerGroupCode = AutoSearchEngineerGroupCode
+            inValue.Body.DeliveryDateNum = DeliveryDateNum
+            inValue.Body.ScheduleTimeTypeCode = ScheduleTimeTypeCode
+            inValue.Body.ScheduleTimeFromNum = ScheduleTimeFromNum
+            inValue.Body.ScheduleDateToNum = ScheduleDateToNum
+            inValue.Body.ScheduleTimeToNum = ScheduleTimeToNum
+            inValue.Body.ScheduleRingFirst = ScheduleRingFirst
+            inValue.Body.Notes = Notes
+            Dim retVal As NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsResponse = CType(Me,NCWebAPI.ProductsAndOrderingSoap).CustomerApplication_ScheduleDelivery_Agreements(inValue)
+            Return retVal.Body.CustomerApplication_ScheduleDelivery_AgreementsResult
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function NCWebAPI_ProductsAndOrderingSoap_CustomerApplication_ScheduleDelivery_AgreementsAsync(ByVal request As NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsRequest) As System.Threading.Tasks.Task(Of NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsResponse) Implements NCWebAPI.ProductsAndOrderingSoap.CustomerApplication_ScheduleDelivery_AgreementsAsync
+            Return MyBase.Channel.CustomerApplication_ScheduleDelivery_AgreementsAsync(request)
+        End Function
+        
+        Public Function CustomerApplication_ScheduleDelivery_AgreementsAsync(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal CustomerCode As Long, ByVal ApplicationCode As Long, ByVal BookForEngineerCode As Long, ByVal AutoSearchEngineerGroupCode As Long, ByVal DeliveryDateNum As Long, ByVal ScheduleTimeTypeCode As Long, ByVal ScheduleTimeFromNum As Long, ByVal ScheduleDateToNum As Long, ByVal ScheduleTimeToNum As Long, ByVal ScheduleRingFirst As Boolean, ByVal Notes As String) As System.Threading.Tasks.Task(Of NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsResponse)
+            Dim inValue As NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsRequest = New NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsRequest()
+            inValue.Body = New NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsRequestBody()
+            inValue.Body.SystemID = SystemID
+            inValue.Body.SystemCode = SystemCode
+            inValue.Body.Username = Username
+            inValue.Body.Password = Password
+            inValue.Body.CustomerCode = CustomerCode
+            inValue.Body.ApplicationCode = ApplicationCode
+            inValue.Body.BookForEngineerCode = BookForEngineerCode
+            inValue.Body.AutoSearchEngineerGroupCode = AutoSearchEngineerGroupCode
+            inValue.Body.DeliveryDateNum = DeliveryDateNum
+            inValue.Body.ScheduleTimeTypeCode = ScheduleTimeTypeCode
+            inValue.Body.ScheduleTimeFromNum = ScheduleTimeFromNum
+            inValue.Body.ScheduleDateToNum = ScheduleDateToNum
+            inValue.Body.ScheduleTimeToNum = ScheduleTimeToNum
+            inValue.Body.ScheduleRingFirst = ScheduleRingFirst
+            inValue.Body.Notes = Notes
+            Return CType(Me,NCWebAPI.ProductsAndOrderingSoap).CustomerApplication_ScheduleDelivery_AgreementsAsync(inValue)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function NCWebAPI_ProductsAndOrderingSoap_CustomerApplication_ScheduleDelivery_Orders(ByVal request As NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersRequest) As NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersResponse Implements NCWebAPI.ProductsAndOrderingSoap.CustomerApplication_ScheduleDelivery_Orders
+            Return MyBase.Channel.CustomerApplication_ScheduleDelivery_Orders(request)
+        End Function
+        
+        Public Function CustomerApplication_ScheduleDelivery_Orders(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal CustomerCode As Long, ByVal ApplicationCode As Long, ByVal BookForEngineerCode As Long, ByVal AutoSearchEngineerGroupCode As Long, ByVal DeliveryDateNum As Long, ByVal ScheduleTimeTypeCode As Long, ByVal ScheduleTimeFromNum As Long, ByVal ScheduleDateToNum As Long, ByVal ScheduleTimeToNum As Long, ByVal ScheduleRingFirst As Boolean, ByVal Notes As String) As NCWebAPI.AddToOrder_SetDeliveryDetailsReply
+            Dim inValue As NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersRequest = New NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersRequest()
+            inValue.Body = New NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersRequestBody()
+            inValue.Body.SystemID = SystemID
+            inValue.Body.SystemCode = SystemCode
+            inValue.Body.Username = Username
+            inValue.Body.Password = Password
+            inValue.Body.CustomerCode = CustomerCode
+            inValue.Body.ApplicationCode = ApplicationCode
+            inValue.Body.BookForEngineerCode = BookForEngineerCode
+            inValue.Body.AutoSearchEngineerGroupCode = AutoSearchEngineerGroupCode
+            inValue.Body.DeliveryDateNum = DeliveryDateNum
+            inValue.Body.ScheduleTimeTypeCode = ScheduleTimeTypeCode
+            inValue.Body.ScheduleTimeFromNum = ScheduleTimeFromNum
+            inValue.Body.ScheduleDateToNum = ScheduleDateToNum
+            inValue.Body.ScheduleTimeToNum = ScheduleTimeToNum
+            inValue.Body.ScheduleRingFirst = ScheduleRingFirst
+            inValue.Body.Notes = Notes
+            Dim retVal As NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersResponse = CType(Me,NCWebAPI.ProductsAndOrderingSoap).CustomerApplication_ScheduleDelivery_Orders(inValue)
+            Return retVal.Body.CustomerApplication_ScheduleDelivery_OrdersResult
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function NCWebAPI_ProductsAndOrderingSoap_CustomerApplication_ScheduleDelivery_OrdersAsync(ByVal request As NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersRequest) As System.Threading.Tasks.Task(Of NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersResponse) Implements NCWebAPI.ProductsAndOrderingSoap.CustomerApplication_ScheduleDelivery_OrdersAsync
+            Return MyBase.Channel.CustomerApplication_ScheduleDelivery_OrdersAsync(request)
+        End Function
+        
+        Public Function CustomerApplication_ScheduleDelivery_OrdersAsync(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal CustomerCode As Long, ByVal ApplicationCode As Long, ByVal BookForEngineerCode As Long, ByVal AutoSearchEngineerGroupCode As Long, ByVal DeliveryDateNum As Long, ByVal ScheduleTimeTypeCode As Long, ByVal ScheduleTimeFromNum As Long, ByVal ScheduleDateToNum As Long, ByVal ScheduleTimeToNum As Long, ByVal ScheduleRingFirst As Boolean, ByVal Notes As String) As System.Threading.Tasks.Task(Of NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersResponse)
+            Dim inValue As NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersRequest = New NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersRequest()
+            inValue.Body = New NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersRequestBody()
+            inValue.Body.SystemID = SystemID
+            inValue.Body.SystemCode = SystemCode
+            inValue.Body.Username = Username
+            inValue.Body.Password = Password
+            inValue.Body.CustomerCode = CustomerCode
+            inValue.Body.ApplicationCode = ApplicationCode
+            inValue.Body.BookForEngineerCode = BookForEngineerCode
+            inValue.Body.AutoSearchEngineerGroupCode = AutoSearchEngineerGroupCode
+            inValue.Body.DeliveryDateNum = DeliveryDateNum
+            inValue.Body.ScheduleTimeTypeCode = ScheduleTimeTypeCode
+            inValue.Body.ScheduleTimeFromNum = ScheduleTimeFromNum
+            inValue.Body.ScheduleDateToNum = ScheduleDateToNum
+            inValue.Body.ScheduleTimeToNum = ScheduleTimeToNum
+            inValue.Body.ScheduleRingFirst = ScheduleRingFirst
+            inValue.Body.Notes = Notes
+            Return CType(Me,NCWebAPI.ProductsAndOrderingSoap).CustomerApplication_ScheduleDelivery_OrdersAsync(inValue)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function NCWebAPI_ProductsAndOrderingSoap_ServiceJob_ScheduleDelivery(ByVal request As NCWebAPI.ServiceJob_ScheduleDeliveryRequest) As NCWebAPI.ServiceJob_ScheduleDeliveryResponse Implements NCWebAPI.ProductsAndOrderingSoap.ServiceJob_ScheduleDelivery
+            Return MyBase.Channel.ServiceJob_ScheduleDelivery(request)
+        End Function
+        
+        Public Function ServiceJob_ScheduleDelivery(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal ServiceJobCode As Long, ByVal BookForEngineerCode As Long, ByVal AutoSearchEngineerGroupCode As Long, ByVal DeliveryDateNum As Long, ByVal ScheduleTimeTypeCode As Long, ByVal ScheduleTimeFromNum As Long, ByVal ScheduleDateToNum As Long, ByVal ScheduleTimeToNum As Long, ByVal ScheduleRingFirst As Boolean, ByVal Notes As String) As NCWebAPI.ServiceJob_ScheduleDelivery_Reply
+            Dim inValue As NCWebAPI.ServiceJob_ScheduleDeliveryRequest = New NCWebAPI.ServiceJob_ScheduleDeliveryRequest()
+            inValue.Body = New NCWebAPI.ServiceJob_ScheduleDeliveryRequestBody()
+            inValue.Body.SystemID = SystemID
+            inValue.Body.SystemCode = SystemCode
+            inValue.Body.Username = Username
+            inValue.Body.Password = Password
+            inValue.Body.ServiceJobCode = ServiceJobCode
+            inValue.Body.BookForEngineerCode = BookForEngineerCode
+            inValue.Body.AutoSearchEngineerGroupCode = AutoSearchEngineerGroupCode
+            inValue.Body.DeliveryDateNum = DeliveryDateNum
+            inValue.Body.ScheduleTimeTypeCode = ScheduleTimeTypeCode
+            inValue.Body.ScheduleTimeFromNum = ScheduleTimeFromNum
+            inValue.Body.ScheduleDateToNum = ScheduleDateToNum
+            inValue.Body.ScheduleTimeToNum = ScheduleTimeToNum
+            inValue.Body.ScheduleRingFirst = ScheduleRingFirst
+            inValue.Body.Notes = Notes
+            Dim retVal As NCWebAPI.ServiceJob_ScheduleDeliveryResponse = CType(Me,NCWebAPI.ProductsAndOrderingSoap).ServiceJob_ScheduleDelivery(inValue)
+            Return retVal.Body.ServiceJob_ScheduleDeliveryResult
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function NCWebAPI_ProductsAndOrderingSoap_ServiceJob_ScheduleDeliveryAsync(ByVal request As NCWebAPI.ServiceJob_ScheduleDeliveryRequest) As System.Threading.Tasks.Task(Of NCWebAPI.ServiceJob_ScheduleDeliveryResponse) Implements NCWebAPI.ProductsAndOrderingSoap.ServiceJob_ScheduleDeliveryAsync
+            Return MyBase.Channel.ServiceJob_ScheduleDeliveryAsync(request)
+        End Function
+        
+        Public Function ServiceJob_ScheduleDeliveryAsync(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal ServiceJobCode As Long, ByVal BookForEngineerCode As Long, ByVal AutoSearchEngineerGroupCode As Long, ByVal DeliveryDateNum As Long, ByVal ScheduleTimeTypeCode As Long, ByVal ScheduleTimeFromNum As Long, ByVal ScheduleDateToNum As Long, ByVal ScheduleTimeToNum As Long, ByVal ScheduleRingFirst As Boolean, ByVal Notes As String) As System.Threading.Tasks.Task(Of NCWebAPI.ServiceJob_ScheduleDeliveryResponse)
+            Dim inValue As NCWebAPI.ServiceJob_ScheduleDeliveryRequest = New NCWebAPI.ServiceJob_ScheduleDeliveryRequest()
+            inValue.Body = New NCWebAPI.ServiceJob_ScheduleDeliveryRequestBody()
+            inValue.Body.SystemID = SystemID
+            inValue.Body.SystemCode = SystemCode
+            inValue.Body.Username = Username
+            inValue.Body.Password = Password
+            inValue.Body.ServiceJobCode = ServiceJobCode
+            inValue.Body.BookForEngineerCode = BookForEngineerCode
+            inValue.Body.AutoSearchEngineerGroupCode = AutoSearchEngineerGroupCode
+            inValue.Body.DeliveryDateNum = DeliveryDateNum
+            inValue.Body.ScheduleTimeTypeCode = ScheduleTimeTypeCode
+            inValue.Body.ScheduleTimeFromNum = ScheduleTimeFromNum
+            inValue.Body.ScheduleDateToNum = ScheduleDateToNum
+            inValue.Body.ScheduleTimeToNum = ScheduleTimeToNum
+            inValue.Body.ScheduleRingFirst = ScheduleRingFirst
+            inValue.Body.Notes = Notes
+            Return CType(Me,NCWebAPI.ProductsAndOrderingSoap).ServiceJob_ScheduleDeliveryAsync(inValue)
         End Function
         
         <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
@@ -15432,6 +18508,55 @@ Namespace NCWebAPI
         End Function
         
         <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function NCWebAPI_ProductsAndOrderingSoap_Get_FieldCalls_AvailabilityList(ByVal request As NCWebAPI.Get_FieldCalls_AvailabilityListRequest) As NCWebAPI.Get_FieldCalls_AvailabilityListResponse Implements NCWebAPI.ProductsAndOrderingSoap.Get_FieldCalls_AvailabilityList
+            Return MyBase.Channel.Get_FieldCalls_AvailabilityList(request)
+        End Function
+        
+        Public Function Get_FieldCalls_AvailabilityList(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal Postcode As String, ByVal StartDateNum As Long, ByVal NumberOfDaysAhead As Long, ByVal PointsRequired As Decimal, ByVal NumberOfDaysToFind As Long, ByVal ContainsDelivery As Boolean, ByVal ContainsService As Boolean, ByVal LimitToEngineerGroupCode As Long, ByVal RequireCarrierClassCode As Long) As NCWebAPI.Get_FieldCalls_AvailabilityList_Reply
+            Dim inValue As NCWebAPI.Get_FieldCalls_AvailabilityListRequest = New NCWebAPI.Get_FieldCalls_AvailabilityListRequest()
+            inValue.Body = New NCWebAPI.Get_FieldCalls_AvailabilityListRequestBody()
+            inValue.Body.SystemID = SystemID
+            inValue.Body.SystemCode = SystemCode
+            inValue.Body.Username = Username
+            inValue.Body.Password = Password
+            inValue.Body.Postcode = Postcode
+            inValue.Body.StartDateNum = StartDateNum
+            inValue.Body.NumberOfDaysAhead = NumberOfDaysAhead
+            inValue.Body.PointsRequired = PointsRequired
+            inValue.Body.NumberOfDaysToFind = NumberOfDaysToFind
+            inValue.Body.ContainsDelivery = ContainsDelivery
+            inValue.Body.ContainsService = ContainsService
+            inValue.Body.LimitToEngineerGroupCode = LimitToEngineerGroupCode
+            inValue.Body.RequireCarrierClassCode = RequireCarrierClassCode
+            Dim retVal As NCWebAPI.Get_FieldCalls_AvailabilityListResponse = CType(Me,NCWebAPI.ProductsAndOrderingSoap).Get_FieldCalls_AvailabilityList(inValue)
+            Return retVal.Body.Get_FieldCalls_AvailabilityListResult
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function NCWebAPI_ProductsAndOrderingSoap_Get_FieldCalls_AvailabilityListAsync(ByVal request As NCWebAPI.Get_FieldCalls_AvailabilityListRequest) As System.Threading.Tasks.Task(Of NCWebAPI.Get_FieldCalls_AvailabilityListResponse) Implements NCWebAPI.ProductsAndOrderingSoap.Get_FieldCalls_AvailabilityListAsync
+            Return MyBase.Channel.Get_FieldCalls_AvailabilityListAsync(request)
+        End Function
+        
+        Public Function Get_FieldCalls_AvailabilityListAsync(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal Postcode As String, ByVal StartDateNum As Long, ByVal NumberOfDaysAhead As Long, ByVal PointsRequired As Decimal, ByVal NumberOfDaysToFind As Long, ByVal ContainsDelivery As Boolean, ByVal ContainsService As Boolean, ByVal LimitToEngineerGroupCode As Long, ByVal RequireCarrierClassCode As Long) As System.Threading.Tasks.Task(Of NCWebAPI.Get_FieldCalls_AvailabilityListResponse)
+            Dim inValue As NCWebAPI.Get_FieldCalls_AvailabilityListRequest = New NCWebAPI.Get_FieldCalls_AvailabilityListRequest()
+            inValue.Body = New NCWebAPI.Get_FieldCalls_AvailabilityListRequestBody()
+            inValue.Body.SystemID = SystemID
+            inValue.Body.SystemCode = SystemCode
+            inValue.Body.Username = Username
+            inValue.Body.Password = Password
+            inValue.Body.Postcode = Postcode
+            inValue.Body.StartDateNum = StartDateNum
+            inValue.Body.NumberOfDaysAhead = NumberOfDaysAhead
+            inValue.Body.PointsRequired = PointsRequired
+            inValue.Body.NumberOfDaysToFind = NumberOfDaysToFind
+            inValue.Body.ContainsDelivery = ContainsDelivery
+            inValue.Body.ContainsService = ContainsService
+            inValue.Body.LimitToEngineerGroupCode = LimitToEngineerGroupCode
+            inValue.Body.RequireCarrierClassCode = RequireCarrierClassCode
+            Return CType(Me,NCWebAPI.ProductsAndOrderingSoap).Get_FieldCalls_AvailabilityListAsync(inValue)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function NCWebAPI_ProductsAndOrderingSoap_ClearChangeList(ByVal request As NCWebAPI.ClearChangeListRequest) As NCWebAPI.ClearChangeListResponse Implements NCWebAPI.ProductsAndOrderingSoap.ClearChangeList
             Return MyBase.Channel.ClearChangeList(request)
         End Function
@@ -15623,6 +18748,105 @@ Namespace NCWebAPI
             inValue.Body.Password = Password
             inValue.Body.objRequest = objRequest
             Return CType(Me,NCWebAPI.ProductsAndOrderingSoap).CreateNewCustomerApplicationAsync(inValue)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function NCWebAPI_ProductsAndOrderingSoap_CreateServiceJob(ByVal request As NCWebAPI.CreateServiceJobRequest) As NCWebAPI.CreateServiceJobResponse Implements NCWebAPI.ProductsAndOrderingSoap.CreateServiceJob
+            Return MyBase.Channel.CreateServiceJob(request)
+        End Function
+        
+        Public Function CreateServiceJob(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal objRequest As NCWebAPI.CreateServiceJobRequestDetails) As NCWebAPI.CreateServiceJobReply
+            Dim inValue As NCWebAPI.CreateServiceJobRequest = New NCWebAPI.CreateServiceJobRequest()
+            inValue.Body = New NCWebAPI.CreateServiceJobRequestBody()
+            inValue.Body.SystemID = SystemID
+            inValue.Body.SystemCode = SystemCode
+            inValue.Body.Username = Username
+            inValue.Body.Password = Password
+            inValue.Body.objRequest = objRequest
+            Dim retVal As NCWebAPI.CreateServiceJobResponse = CType(Me,NCWebAPI.ProductsAndOrderingSoap).CreateServiceJob(inValue)
+            Return retVal.Body.CreateServiceJobResult
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function NCWebAPI_ProductsAndOrderingSoap_CreateServiceJobAsync(ByVal request As NCWebAPI.CreateServiceJobRequest) As System.Threading.Tasks.Task(Of NCWebAPI.CreateServiceJobResponse) Implements NCWebAPI.ProductsAndOrderingSoap.CreateServiceJobAsync
+            Return MyBase.Channel.CreateServiceJobAsync(request)
+        End Function
+        
+        Public Function CreateServiceJobAsync(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal objRequest As NCWebAPI.CreateServiceJobRequestDetails) As System.Threading.Tasks.Task(Of NCWebAPI.CreateServiceJobResponse)
+            Dim inValue As NCWebAPI.CreateServiceJobRequest = New NCWebAPI.CreateServiceJobRequest()
+            inValue.Body = New NCWebAPI.CreateServiceJobRequestBody()
+            inValue.Body.SystemID = SystemID
+            inValue.Body.SystemCode = SystemCode
+            inValue.Body.Username = Username
+            inValue.Body.Password = Password
+            inValue.Body.objRequest = objRequest
+            Return CType(Me,NCWebAPI.ProductsAndOrderingSoap).CreateServiceJobAsync(inValue)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function NCWebAPI_ProductsAndOrderingSoap_GetCustomerAgreementApplications(ByVal request As NCWebAPI.GetCustomerAgreementApplicationsRequest1) As NCWebAPI.GetCustomerAgreementApplicationsResponse Implements NCWebAPI.ProductsAndOrderingSoap.GetCustomerAgreementApplications
+            Return MyBase.Channel.GetCustomerAgreementApplications(request)
+        End Function
+        
+        Public Function GetCustomerAgreementApplications(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal objRequest As NCWebAPI.GetCustomerAgreementApplicationsRequest) As NCWebAPI.GetCustomerAgreementApplicationsReply
+            Dim inValue As NCWebAPI.GetCustomerAgreementApplicationsRequest1 = New NCWebAPI.GetCustomerAgreementApplicationsRequest1()
+            inValue.Body = New NCWebAPI.GetCustomerAgreementApplicationsRequest1Body()
+            inValue.Body.SystemID = SystemID
+            inValue.Body.SystemCode = SystemCode
+            inValue.Body.Username = Username
+            inValue.Body.Password = Password
+            inValue.Body.objRequest = objRequest
+            Dim retVal As NCWebAPI.GetCustomerAgreementApplicationsResponse = CType(Me,NCWebAPI.ProductsAndOrderingSoap).GetCustomerAgreementApplications(inValue)
+            Return retVal.Body.GetCustomerAgreementApplicationsResult
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function NCWebAPI_ProductsAndOrderingSoap_GetCustomerAgreementApplicationsAsync(ByVal request As NCWebAPI.GetCustomerAgreementApplicationsRequest1) As System.Threading.Tasks.Task(Of NCWebAPI.GetCustomerAgreementApplicationsResponse) Implements NCWebAPI.ProductsAndOrderingSoap.GetCustomerAgreementApplicationsAsync
+            Return MyBase.Channel.GetCustomerAgreementApplicationsAsync(request)
+        End Function
+        
+        Public Function GetCustomerAgreementApplicationsAsync(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal objRequest As NCWebAPI.GetCustomerAgreementApplicationsRequest) As System.Threading.Tasks.Task(Of NCWebAPI.GetCustomerAgreementApplicationsResponse)
+            Dim inValue As NCWebAPI.GetCustomerAgreementApplicationsRequest1 = New NCWebAPI.GetCustomerAgreementApplicationsRequest1()
+            inValue.Body = New NCWebAPI.GetCustomerAgreementApplicationsRequest1Body()
+            inValue.Body.SystemID = SystemID
+            inValue.Body.SystemCode = SystemCode
+            inValue.Body.Username = Username
+            inValue.Body.Password = Password
+            inValue.Body.objRequest = objRequest
+            Return CType(Me,NCWebAPI.ProductsAndOrderingSoap).GetCustomerAgreementApplicationsAsync(inValue)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function NCWebAPI_ProductsAndOrderingSoap_GetCustomerAgreements(ByVal request As NCWebAPI.GetCustomerAgreementsRequest) As NCWebAPI.GetCustomerAgreementsResponse Implements NCWebAPI.ProductsAndOrderingSoap.GetCustomerAgreements
+            Return MyBase.Channel.GetCustomerAgreements(request)
+        End Function
+        
+        Public Function GetCustomerAgreements(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal CustomerCode As Long) As NCWebAPI.GetCustomerAgreementsReply
+            Dim inValue As NCWebAPI.GetCustomerAgreementsRequest = New NCWebAPI.GetCustomerAgreementsRequest()
+            inValue.Body = New NCWebAPI.GetCustomerAgreementsRequestBody()
+            inValue.Body.SystemID = SystemID
+            inValue.Body.SystemCode = SystemCode
+            inValue.Body.Username = Username
+            inValue.Body.Password = Password
+            inValue.Body.CustomerCode = CustomerCode
+            Dim retVal As NCWebAPI.GetCustomerAgreementsResponse = CType(Me,NCWebAPI.ProductsAndOrderingSoap).GetCustomerAgreements(inValue)
+            Return retVal.Body.GetCustomerAgreementsResult
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function NCWebAPI_ProductsAndOrderingSoap_GetCustomerAgreementsAsync(ByVal request As NCWebAPI.GetCustomerAgreementsRequest) As System.Threading.Tasks.Task(Of NCWebAPI.GetCustomerAgreementsResponse) Implements NCWebAPI.ProductsAndOrderingSoap.GetCustomerAgreementsAsync
+            Return MyBase.Channel.GetCustomerAgreementsAsync(request)
+        End Function
+        
+        Public Function GetCustomerAgreementsAsync(ByVal SystemID As String, ByVal SystemCode As String, ByVal Username As String, ByVal Password As String, ByVal CustomerCode As Long) As System.Threading.Tasks.Task(Of NCWebAPI.GetCustomerAgreementsResponse)
+            Dim inValue As NCWebAPI.GetCustomerAgreementsRequest = New NCWebAPI.GetCustomerAgreementsRequest()
+            inValue.Body = New NCWebAPI.GetCustomerAgreementsRequestBody()
+            inValue.Body.SystemID = SystemID
+            inValue.Body.SystemCode = SystemCode
+            inValue.Body.Username = Username
+            inValue.Body.Password = Password
+            inValue.Body.CustomerCode = CustomerCode
+            Return CType(Me,NCWebAPI.ProductsAndOrderingSoap).GetCustomerAgreementsAsync(inValue)
         End Function
     End Class
 End Namespace

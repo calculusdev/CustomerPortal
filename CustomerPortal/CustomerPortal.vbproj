@@ -43,6 +43,7 @@
     <OutputPath>bin\</OutputPath>
     <DocumentationFile>CustomerPortal.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -123,7 +124,12 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AutoLogin.aspx" />
+    <Content Include="BookVisit.aspx" />
+    <Content Include="CreateAgreement.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="CustomerPortal.aspx" />
+    <Content Include="NewEnquiry.aspx" />
     <Content Include="scripts\ai.0.22.19-build00125.js" />
     <Content Include="scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Service References\NCWebAPI\CustomerPortal.NCWebAPI.AboutResponse.datasource">
@@ -384,16 +390,93 @@
     <Content Include="Service References\NCWebAPI\CustomerPortal.NCWebAPI.WeddingList_MarkAsOrderedResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Service References\NCWebAPI\productsandorders.disco" />
+    <None Include="My Project\PublishProfiles\Custom.pubxml" />
+    <None Include="My Project\PublishProfiles\Microserver.pubxml" />
+    <Content Include="Service References\NCWebAPI\CustomerPortal.NCWebAPI.GetCustomerDetailsReply.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\NCWebAPI\CustomerPortal.NCWebAPI.GetCustomerDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\NCWebAPI\CustomerPortal.NCWebAPI.GetCustomerAgreementsReply.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\NCWebAPI\CustomerPortal.NCWebAPI.GetCustomerAgreementsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\NCWebAPI\CustomerPortal.NCWebAPI.GetCustomerAgreementApplicationsReply.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\NCWebAPI\CustomerPortal.NCWebAPI.GetCustomerAgreementApplicationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\NCWebAPI\CustomerPortal.NCWebAPI.CreateServiceJobReply.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\NCWebAPI\CustomerPortal.NCWebAPI.CreateServiceJobResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\NCWebAPI\CustomerPortal.NCWebAPI.Get_FieldCalls_AvailabilityListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\NCWebAPI\CustomerPortal.NCWebAPI.Get_FieldCalls_AvailabilityList_Reply.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\NCWebAPI\CustomerPortal.NCWebAPI.RentalAgreement_ScheduleDelivery_Reply.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\NCWebAPI\CustomerPortal.NCWebAPI.CustomerApplication_ScheduleDelivery_AgreementsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\NCWebAPI\CustomerPortal.NCWebAPI.CustomerApplication_ScheduleDelivery_OrdersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\NCWebAPI\CustomerPortal.NCWebAPI.ServiceJob_ScheduleDeliveryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\NCWebAPI\CustomerPortal.NCWebAPI.ServiceJob_ScheduleDelivery_Reply.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\NCWebAPI\configuration91.svcinfo" />
     <None Include="Service References\NCWebAPI\configuration.svcinfo" />
+    <None Include="Service References\NCWebAPI\productsandorders.wsdl" />
     <None Include="Service References\NCWebAPI\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.vb</LastGenOutput>
     </None>
+    <None Include="Service References\NCWebAPI\productsandorders.disco" />
+    <Content Include="styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoLogin.aspx.designer.vb">
+      <DependentUpon>AutoLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AutoLogin.aspx.vb">
+      <DependentUpon>AutoLogin.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="BookVisit.aspx.designer.vb">
+      <DependentUpon>BookVisit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BookVisit.aspx.vb">
+      <DependentUpon>BookVisit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="CreateAgreement.aspx.designer.vb">
+      <DependentUpon>CreateAgreement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CreateAgreement.aspx.vb">
+      <DependentUpon>CreateAgreement.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="CustomerPortal.aspx.designer.vb">
       <DependentUpon>CustomerPortal.aspx</DependentUpon>
     </Compile>
@@ -419,6 +502,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="NewEnquiry.aspx.designer.vb">
+      <DependentUpon>NewEnquiry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewEnquiry.aspx.vb">
+      <DependentUpon>NewEnquiry.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Service References\NCWebAPI\Reference.vb">
       <AutoGen>True</AutoGen>
@@ -448,7 +538,6 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <Content Include="packages.config" />
-    <None Include="Service References\NCWebAPI\productsandorders.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

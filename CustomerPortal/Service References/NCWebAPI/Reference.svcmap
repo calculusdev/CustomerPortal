@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.3.199:90/webservicesTEST/productsandorders.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://warren2.findesolutions.com:90/webservicesTEST/productsandorders.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="productsandorders.wsdl" MetadataType="Wsdl" ID="9a29a35e-bb04-4fc9-b466-bebfbbd3dc69" SourceId="1" SourceUrl="http://192.168.3.199:90/webservicesTEST/productsandorders.asmx?wsdl" />
-    <MetadataFile FileName="productsandorders.disco" MetadataType="Disco" ID="18fdd677-30c0-43b7-86b7-f46826ecd9e2" SourceId="1" SourceUrl="http://192.168.3.199:90/webservicesTEST/productsandorders.asmx?disco" />
+    <MetadataFile FileName="productsandorders.disco" MetadataType="Disco" ID="0f3d0eff-ca03-43ef-9d87-7fd8b3064121" SourceId="1" SourceUrl="http://warren2.findesolutions.com:90/webservicesTEST/productsandorders.asmx?disco" />
+    <MetadataFile FileName="productsandorders.wsdl" MetadataType="Wsdl" ID="09b503bf-d3c0-41fa-ab41-caaef25c83f5" SourceId="1" SourceUrl="http://warren2.findesolutions.com:90/webservicesTEST/productsandorders.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
